@@ -14,6 +14,6 @@ with at least one bridge and a light (bulb, lightstrip etc.)
 1. Clone the repository and open *HueDesktop.sln* in Visual Studio 2015.
 2. Clean and build the project (Debug or Release configuratons).
 3. Run *HueDesktop.exe* in ***{project directory}/bin/Debug*** or ***{project directory}/bin/Release*** folder.
-4. Press Hue Bridge button once and click *Connect* in UI to perform a *ONE-TIME* pairing operation.
+4. Press Hue Bridge button once and click *Connect* in UI to perform a *ONE_TIME* pairing operation.
 5. Click *Refresh* button to display all lights paired with the bridge.
-6. Select any light in the list and change brightness.
+6. Select any light in the list and change brightness. 
