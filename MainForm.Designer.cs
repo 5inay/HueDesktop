@@ -44,6 +44,7 @@
             this.gbAllOnOff = new System.Windows.Forms.GroupBox();
             this.pbFindingHueBridge = new System.Windows.Forms.ProgressBar();
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gbSelectedLightDetails = new System.Windows.Forms.GroupBox();
             this.pnlLightCtrl = new System.Windows.Forms.Panel();
             this.btnColorChange = new System.Windows.Forms.Button();
@@ -60,21 +61,20 @@
             this.btnBridgeDetails = new System.Windows.Forms.Button();
             this.lblBridgeID = new System.Windows.Forms.Label();
             this.lblBridgeName = new System.Windows.Forms.Label();
+            this.lblBridgeCnx = new System.Windows.Forms.Label();
             this.lblBridge = new System.Windows.Forms.Label();
             this.colorPicker = new System.Windows.Forms.ColorDialog();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lblBridgeCnx = new System.Windows.Forms.Label();
             this.gbConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLights)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lightBindingSource)).BeginInit();
             this.gbLights.SuspendLayout();
             this.gbAllOnOff.SuspendLayout();
             this.pnlMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.gbSelectedLightDetails.SuspendLayout();
             this.pnlLightCtrl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbBrightness)).BeginInit();
             this.gbBridgeDetails.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnConnect
@@ -229,6 +229,16 @@
             this.pnlMain.Size = new System.Drawing.Size(639, 402);
             this.pnlMain.TabIndex = 3;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(301, 10);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(63, 63);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
             // gbSelectedLightDetails
             // 
             this.gbSelectedLightDetails.Controls.Add(this.pnlLightCtrl);
@@ -301,7 +311,7 @@
             this.tbBrightness.Size = new System.Drawing.Size(40, 229);
             this.tbBrightness.SmallChange = 10;
             this.tbBrightness.TabIndex = 3;
-            this.tbBrightness.TickFrequency = 10;
+            this.tbBrightness.TickFrequency = 12;
             this.tbBrightness.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
             this.tbBrightness.Value = 1;
             this.tbBrightness.MouseUp += new System.Windows.Forms.MouseEventHandler(this.onBrightness_ValueChanged);
@@ -414,6 +424,18 @@
             this.lblBridgeName.TabIndex = 1;
             this.lblBridgeName.Text = "Name:";
             // 
+            // lblBridgeCnx
+            // 
+            this.lblBridgeCnx.AutoSize = true;
+            this.lblBridgeCnx.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBridgeCnx.Location = new System.Drawing.Point(248, 76);
+            this.lblBridgeCnx.MaximumSize = new System.Drawing.Size(380, 100);
+            this.lblBridgeCnx.Name = "lblBridgeCnx";
+            this.lblBridgeCnx.Size = new System.Drawing.Size(173, 26);
+            this.lblBridgeCnx.TabIndex = 1;
+            this.lblBridgeCnx.Text = "Bridge Connected. \r\nClick Refresh to see paired lights";
+            this.lblBridgeCnx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // lblBridge
             // 
             this.lblBridge.AutoSize = true;
@@ -427,28 +449,6 @@
             // 
             this.colorPicker.AnyColor = true;
             this.colorPicker.FullOpen = true;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(301, 10);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(63, 63);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
-            // 
-            // lblBridgeCnx
-            // 
-            this.lblBridgeCnx.AutoSize = true;
-            this.lblBridgeCnx.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBridgeCnx.Location = new System.Drawing.Point(248, 76);
-            this.lblBridgeCnx.MaximumSize = new System.Drawing.Size(380, 100);
-            this.lblBridgeCnx.Name = "lblBridgeCnx";
-            this.lblBridgeCnx.Size = new System.Drawing.Size(173, 26);
-            this.lblBridgeCnx.TabIndex = 1;
-            this.lblBridgeCnx.Text = "Bridge Connected. \r\nClick Refresh to see paired lights";
-            this.lblBridgeCnx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MainForm
             // 
@@ -476,13 +476,13 @@
             this.gbAllOnOff.ResumeLayout(false);
             this.pnlMain.ResumeLayout(false);
             this.pnlMain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.gbSelectedLightDetails.ResumeLayout(false);
             this.pnlLightCtrl.ResumeLayout(false);
             this.pnlLightCtrl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbBrightness)).EndInit();
             this.gbBridgeDetails.ResumeLayout(false);
             this.gbBridgeDetails.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
