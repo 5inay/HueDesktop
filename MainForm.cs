@@ -274,6 +274,8 @@ namespace HueDesktop
             logger.Info("API KEY DONE");
 
             btnConnect.Enabled = false;
+
+            gbConnect.Visible = false;
         }
 
         private void btnRefreshLights_Click(object sender, EventArgs e)
