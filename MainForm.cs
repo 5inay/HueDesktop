@@ -59,13 +59,6 @@ namespace HueDesktop
                 btnConnect.Enabled = true;
                 findBridges();
             }
-
-            //TESTING
-            double X, Y;
-            ColorConverter.colorToXY(1.0, 1.0, 1.0, out X, out Y);
-            Console.WriteLine("X ==> " + X);
-            Console.WriteLine("Y ==> " + Y);
-            //END TESTING
         }
         #endregion //CONSTRUCTOR
 
@@ -203,6 +196,8 @@ namespace HueDesktop
             }
 
             updateBridgeDetailsUI();
+
+            populateBridgeLights();
         }
         #endregion //FIND_BRIDGES
 
@@ -476,7 +471,6 @@ namespace HueDesktop
         {
             string endpoint = theHueBridge.bridgeURLBase.Replace("http://", "").Replace(@":80/", "");
             RESTRequests r = new RESTRequests(endpoint);
-            //"{\"1\":{\"state\":{\"on\":false,\"bri\":254,\"hue\":33999,\"sat\":233,\"effect\":\"none\",\"xy\":[0.3199,0.3351],\"ct\":164,\"alert\":\"none\",\"colormode\":\"ct\",\"reachable\":true},\"type\":\"Extended color light\",\"name\":\"West\",\"modelid\":\"LCT001\",\"manufacturername\":\"Philips\",\"uniqueid\":\"00:17:88:01:00:f6:5b:69-0b\",\"swversion\":\"5.50.1.19085\"},\"2\":{\"state\":{\"on\":false,\"bri\":254,\"hue\":65527,\"sat\":253,\"effect\":\"none\",\"xy\":[0.6736,0.3221],\"ct\":153,\"alert\":\"none\",\"colormode\":\"xy\",\"reachable\":true},\"type\":\"Extended color light\",\"name\":\"North\",\"modelid\":\"LCT001\",\"manufacturername\":\"Philips\",\"uniqueid\":\"00:17:88:01:00:f6:48:25-0b\",\"swversion\":\"5.50.1.19085\"},\"3\":{\"state\":{\"on\":false,\"bri\":1,\"hue\":34075,\"sat\":251,\"effect\":\"none\",\"xy\":[0.3144,0.3302],\"ct\":156,\"alert\":\"none\",\"colormode\":\"ct\",\"reachable\":true},\"type\":\"Extended color light\",\"name\":\"South\",\"modelid\":\"LCT001\",\"manufacturername\":\"Philips\",\"uniqueid\":\"00:17:88:01:00:f7:34:c1-0b\",\"swversion\":\"5.50.1.19085\"},\"4\":{\"state\":{\"on\":false,\"bri\":2,\"hue\":38239,\"sat\":148,\"effect\":\"none\",\"xy\":[0.2730,0.3342],\"alert\":\"none\",\"colormode\":\"xy\",\"reachable\":false},\"type\":\"Color light\",\"name\":\"Hue lightstrip\",\"modelid\":\"LST001\",\"manufacturername\":\"Philips\",\"uniqueid\":\"00:17:88:01:00:cb:7f:71-0b\",\"swversion\":\"5.23.1.13452\"},\"5\":{\"state\":{\"on\":false,\"bri\":68,\"hue\":65527,\"sat\":253,\"effect\":\"none\",\"xy\":[0.6736,0.3221],\"ct\":153,\"alert\":\"none\",\"colormode\":\"xy\",\"reachable\":true},\"type\":\"Extended color light\",\"name\":\"East\",\"modelid\":\"LCT007\",\"manufacturername\":\"Philips\",\"uniqueid\":\"00:17:88:01:10:4e:16:b8-0b\",\"swversion\":\"5.50.1.19085\"}}";
             string result = await r.GET("/api/" + APIKey + "/lights");
 
             if (result == null || result.Contains("error") || result == "")
