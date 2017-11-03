@@ -92,7 +92,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="icon-pack\par16.svg" />
     <None Include="icons\lightstrip.png" />
     <None Include="icons\bulb.png" />
     <None Include="icons\helper-icon.png" />
