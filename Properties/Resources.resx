@@ -181,4 +181,7 @@
   <data name="BTNTXT_ON" xml:space="preserve">
     <value>Turn ON</value>
   </data>
+  <data name="DOWNLD_FILE_STR" xml:space="preserve">
+    <value>Downloading file - Description.xml --&gt; {0}% Done.</value>
+  </data>
 </root>

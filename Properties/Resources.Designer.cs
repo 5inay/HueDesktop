@@ -179,6 +179,15 @@ namespace HueDesktop.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Downloading file - Description.xml --&gt; {0}% Done..
+        /// </summary>
+        internal static string DOWNLD_FILE_STR {
+            get {
+                return ResourceManager.GetString("DOWNLD_FILE_STR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No Hue Bridges found! Please check if you are connected to the same network..
         /// </summary>
         internal static string ERROR00 {

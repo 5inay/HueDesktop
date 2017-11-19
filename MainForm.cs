@@ -173,7 +173,8 @@ namespace HueDesktop
         /// <param name="e"></param>
         private void Client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
-            logger.Info("Downloading file --> Description.xml------ " + e.ProgressPercentage.ToString() + "% DONE");
+            int pp = e.ProgressPercentage;
+            logger.Info(String.Format(Resources.DOWNLD_FILE_STR, e.ProgressPercentage));
             updateVerifyPercentageUI(e.ProgressPercentage.ToString());
         }
 
