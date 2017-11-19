@@ -11,7 +11,7 @@ HueDesktop is a simple Windows desktop application which can be used to **contro
 
 ## Instructions
 1. Clone the repository and open `HueDesktop.sln` in Visual Studio 2015.
-2. Clean and build the project (Debug or Release configuratons).
+2. Clean and build the project (Debug or Release configurations).
 3. Run `HueDesktop.exe` in `<project directory>/bin/Debug` or `<project directory>/bin/Release` folder.
 4. Press Hue Bridge button once and click **Connect** in UI to perform a **ONE-TIME** pairing operation.
 5. Select any light in the list and change brightness. 
