@@ -27,8 +27,7 @@ namespace HueDesktop
         private List<JSONBridge> bridges;
 
         private volatile string APIKey;
-        private volatile bool APIKeyExists;
-
+        
         private HueLight[] allLights;
         private int lightIDX = 0;
         #endregion //MEMBER_VARS
@@ -50,10 +49,10 @@ namespace HueDesktop
         private void MainForm_Load(object sender, EventArgs e)
         {
             setupUI();
-
-            checkForExistingKey();
             theHueBridge = new HueBridge();
-            if (APIKeyExists)
+
+            
+            if (checkForExistingKey())
             {
                 btnConnect.Enabled = false;
                 initBridge();
@@ -443,9 +442,8 @@ namespace HueDesktop
         /// <summary>
         /// Checks if the connect operation has been performed at least once
         /// </summary>
-        private void checkForExistingKey()
+        private bool checkForExistingKey()
         {
-            APIKeyExists = false;
             byte[] buffer = new byte[256];
             FileStream fs = File.Open(Resources.KEY_FILE, FileMode.OpenOrCreate);
             int x = fs.Read(buffer, 0, 256);
@@ -453,15 +451,14 @@ namespace HueDesktop
 
             if (x > 1)
             {
-                APIKeyExists = true;
                 APIKey = Encoding.UTF8.GetString(buffer).Trim(new char[] { '\0' });
                 
-                return;
+                return true;
             }
 
             logger.Warn("No API KEY present!");
             
-            return;
+            return false;
         }
         #endregion //API_KEY_HANDLERS
 
