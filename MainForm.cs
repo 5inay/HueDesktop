@@ -30,6 +30,9 @@ namespace HueDesktop
         
         private HueLight[] allLights;
         private int lightIDX = 0;
+
+        private string bridgeXmlPath;
+        private string apiKeyPath;
         #endregion //MEMBER_VARS
 
 
@@ -49,6 +52,7 @@ namespace HueDesktop
         private void MainForm_Load(object sender, EventArgs e)
         {
             setupUI();
+            initPaths();
             theHueBridge = new HueBridge();
 
             
@@ -66,7 +70,7 @@ namespace HueDesktop
         }
 
 
-        #region UI_INITIALIZATION
+        #region INITIALIZATION
         /// <summary>
         /// Initial Setup of the UI based on very first use or
         /// subsequent uses based on succes or failure of the 
@@ -88,15 +92,23 @@ namespace HueDesktop
 
             gbConnect.Visible = false;
         }
-        #endregion  //UI_INITIALIZATION
+
+        private void initPaths()
+        {
+            bridgeXmlPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) +
+                                @"\HueDesktop\" + Resources.BRIDGE_XML;
+            apiKeyPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) +
+                                @"\HueDesktop\" + Resources.KEY_FILE;
+        }
+        #endregion  //INITIALIZATION
 
 
         #region FIND_BRIDGES
         /// <summary>
         /// Finds bridges based on uPnP method mentioned in 
-        /// Philips Hue Developer Guide. This method is asynchronous 
-        /// and uses Client_DownloadStringCompleted method as it's 
-        /// handler when complete.
+        /// Philips Hue Developer Guide. This method is 
+        /// asynchronous and uses Client_DownloadStringCompleted 
+        /// method as it's handler, when complete.
         /// </summary>
         private void findBridges()
         {
@@ -108,7 +120,7 @@ namespace HueDesktop
             //Query for available bridges
             WebClient client = new WebClient();
             client.DownloadStringCompleted += Client_DownloadStringCompleted;
-            client.DownloadStringAsync(new System.Uri(url), null);
+            client.DownloadStringAsync(new Uri(url), null);
             
         }
 
@@ -141,7 +153,7 @@ namespace HueDesktop
                 client.DownloadFileCompleted += Client_DownloadFileCompleted;
 
                 string descriptionURL = "http://" + bridges[0].internalipaddress + "/description.xml";
-                client.DownloadFileAsync(new System.Uri(descriptionURL), Resources.BRIDGE_XML);
+                client.DownloadFileAsync(new Uri(descriptionURL), bridgeXmlPath);
             }
             else
             {
@@ -185,7 +197,7 @@ namespace HueDesktop
         private void initBridge()
         {
             XmlSerializer bridgeGetter = new XmlSerializer(typeof(HueBridge));
-            TextReader bridgeXmlReader = new StreamReader(Resources.BRIDGE_XML);
+            TextReader bridgeXmlReader = new StreamReader(bridgeXmlPath);
             theHueBridge = (HueBridge)bridgeGetter.Deserialize(bridgeXmlReader);
 
             bridgeXmlReader.Close();
@@ -434,7 +446,7 @@ namespace HueDesktop
         /// </summary>
         private async void storeKey()
         {
-            FileStream fs = File.Open(Resources.KEY_FILE, FileMode.OpenOrCreate);
+            FileStream fs = File.Open(apiKeyPath, FileMode.OpenOrCreate);
             await fs.WriteAsync(Encoding.ASCII.GetBytes(APIKey), 0, APIKey.Length);
             fs.Close();
         }
@@ -445,7 +457,7 @@ namespace HueDesktop
         private bool checkForExistingKey()
         {
             byte[] buffer = new byte[256];
-            FileStream fs = File.Open(Resources.KEY_FILE, FileMode.OpenOrCreate);
+            FileStream fs = File.Open(apiKeyPath, FileMode.OpenOrCreate);
             int x = fs.Read(buffer, 0, 256);
             fs.Close();
 
