@@ -467,6 +467,7 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Philips Hue Desktop Application";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.gbConnect.ResumeLayout(false);
             this.gbConnect.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLights)).EndInit();

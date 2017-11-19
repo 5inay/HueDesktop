@@ -44,8 +44,13 @@ namespace HueDesktop
         public MainForm()
         {
             InitializeComponent();
+        }
+        #endregion //CONSTRUCTOR
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
             setupUI();
-            
+
             checkForExistingKey();
             theHueBridge = new HueBridge();
             if (APIKeyExists)
@@ -60,7 +65,6 @@ namespace HueDesktop
                 findBridges();
             }
         }
-        #endregion //CONSTRUCTOR
 
 
         #region UI_INITIALIZATION
