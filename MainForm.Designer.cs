@@ -64,6 +64,7 @@
             this.lblBridgeCnx = new System.Windows.Forms.Label();
             this.lblBridge = new System.Windows.Forms.Label();
             this.colorPicker = new System.Windows.Forms.ColorDialog();
+            this.lblBrightnessValue = new System.Windows.Forms.Label();
             this.gbConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLights)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lightBindingSource)).BeginInit();
@@ -252,6 +253,7 @@
             // pnlLightCtrl
             // 
             this.pnlLightCtrl.Controls.Add(this.btnColorChange);
+            this.pnlLightCtrl.Controls.Add(this.lblBrightnessValue);
             this.pnlLightCtrl.Controls.Add(this.lblMax);
             this.pnlLightCtrl.Controls.Add(this.label2);
             this.pnlLightCtrl.Controls.Add(this.tbBrightness);
@@ -282,7 +284,7 @@
             // 
             this.lblMax.AutoSize = true;
             this.lblMax.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMax.Location = new System.Drawing.Point(317, 11);
+            this.lblMax.Location = new System.Drawing.Point(317, 38);
             this.lblMax.MaximumSize = new System.Drawing.Size(380, 100);
             this.lblMax.Name = "lblMax";
             this.lblMax.Size = new System.Drawing.Size(33, 15);
@@ -303,17 +305,18 @@
             // tbBrightness
             // 
             this.tbBrightness.LargeChange = 50;
-            this.tbBrightness.Location = new System.Drawing.Point(356, 8);
+            this.tbBrightness.Location = new System.Drawing.Point(356, 38);
             this.tbBrightness.Maximum = 254;
             this.tbBrightness.Minimum = 1;
             this.tbBrightness.Name = "tbBrightness";
             this.tbBrightness.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.tbBrightness.Size = new System.Drawing.Size(40, 229);
+            this.tbBrightness.Size = new System.Drawing.Size(40, 199);
             this.tbBrightness.SmallChange = 10;
             this.tbBrightness.TabIndex = 3;
             this.tbBrightness.TickFrequency = 12;
             this.tbBrightness.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
             this.tbBrightness.Value = 1;
+            this.tbBrightness.Scroll += new System.EventHandler(this.ontbBrightness_Scroll);
             this.tbBrightness.MouseUp += new System.Windows.Forms.MouseEventHandler(this.onBrightness_ValueChanged);
             // 
             // lblLD_Name
@@ -342,7 +345,7 @@
             // 
             this.lblMin.AutoSize = true;
             this.lblMin.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMin.Location = new System.Drawing.Point(322, 215);
+            this.lblMin.Location = new System.Drawing.Point(322, 220);
             this.lblMin.MaximumSize = new System.Drawing.Size(380, 100);
             this.lblMin.Name = "lblMin";
             this.lblMin.Size = new System.Drawing.Size(28, 15);
@@ -450,6 +453,17 @@
             this.colorPicker.AnyColor = true;
             this.colorPicker.FullOpen = true;
             // 
+            // lblBrightnessValue
+            // 
+            this.lblBrightnessValue.AutoSize = true;
+            this.lblBrightnessValue.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBrightnessValue.Location = new System.Drawing.Point(353, 11);
+            this.lblBrightnessValue.MaximumSize = new System.Drawing.Size(380, 100);
+            this.lblBrightnessValue.Name = "lblBrightnessValue";
+            this.lblBrightnessValue.Size = new System.Drawing.Size(33, 15);
+            this.lblBrightnessValue.TabIndex = 1;
+            this.lblBrightnessValue.Text = "MAX";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -524,6 +538,7 @@
         private System.Windows.Forms.Button btnColorChange;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblBridgeCnx;
+        private System.Windows.Forms.Label lblBrightnessValue;
     }
 }
 

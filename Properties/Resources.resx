@@ -184,4 +184,10 @@
   <data name="DOWNLD_FILE_STR" xml:space="preserve">
     <value>Downloading file - Description.xml --&gt; {0}% Done.</value>
   </data>
+  <data name="TEXT_MAX" xml:space="preserve">
+    <value>MAX</value>
+  </data>
+  <data name="TEXT_OFF" xml:space="preserve">
+    <value>OFF</value>
+  </data>
 </root>

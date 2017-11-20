@@ -377,7 +377,10 @@ namespace HueDesktop
             lblLD_Manufacturer.Text = "Manufacturer:  " + selectedLight.manufacturername;
             lblLD_Model.Text = "Model:  " + selectedLight.modelid;
             tbBrightness.Value = (selectedLight.state.on)?selectedLight.state.bri:tbBrightness.Minimum;
-            
+
+            int brt = tbBrightness.Value;
+            lblBrightnessValue.Text = (brt == 1) ? Resources.TEXT_OFF : (brt == 254) ? Resources.TEXT_MAX : brt.ToString();
+
             pnlLightCtrl.Visible = true;
         }
 
@@ -437,6 +440,13 @@ namespace HueDesktop
             {
                 await r.PUT("/api/" + APIKey + "/lights/" + (lightIDX + 1) + "/state", "{\"bri\":" + tbBrightness.Value + "}", Encoding.UTF8, Resources.BODY_TYPE_JSON);
             }
+        }
+
+        private void ontbBrightness_Scroll(object sender, EventArgs e)
+        {
+            int brt = tbBrightness.Value;
+
+            lblBrightnessValue.Text = (brt == 1) ? Resources.TEXT_OFF : (brt == 254) ? Resources.TEXT_MAX : brt.ToString();
         }
         #endregion //UI-Handlers
 

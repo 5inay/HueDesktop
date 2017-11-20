@@ -19,10 +19,10 @@ HueDesktop is a simple Windows desktop application which can be used to **contro
 
 ## Limitations
 1. Application has only been tested with the following combinations/versions of hardware
- a. Philips Hue Bridge Gen 1 (round)
- b. Hue Lamp model LCT001
- c. Hue Lamp model LCT007
- d. Hue Lightstrip LST001
+   - Philips Hue Bridge Gen 1 (round)
+   - Hue Lamp model LCT001
+   - Hue Lamp model LCT007
+   - Hue Lightstrip LST001
 2. These models have restrictions on the color range that can be set. In case of chosen colors that are 
 outside the range-capability of the Hue lamp, the nearest matching color is chosen.
 

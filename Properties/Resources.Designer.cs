@@ -260,5 +260,23 @@ namespace HueDesktop.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MAX.
+        /// </summary>
+        internal static string TEXT_MAX {
+            get {
+                return ResourceManager.GetString("TEXT_MAX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OFF.
+        /// </summary>
+        internal static string TEXT_OFF {
+            get {
+                return ResourceManager.GetString("TEXT_OFF", resourceCulture);
+            }
+        }
     }
 }
