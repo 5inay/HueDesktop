@@ -14,7 +14,7 @@ namespace HueDesktop
     public class HueBridge
     {
         [XmlElement("specVersion")]
-        private SpecVersion bridgeSpecVersion { get; set; }
+        public SpecVersion bridgeSpecVersion { get; set; }
         [XmlElement("URLBase")]
         public string bridgeURLBase { get; set; }
         [XmlElement("device")]
@@ -24,9 +24,9 @@ namespace HueDesktop
     public class SpecVersion
     {
         [XmlElement("major")]
-        private int majorVersion { get; set; }
+        public int majorVersion { get; set; }
         [XmlElement("minor")]
-        private int minorVersion { get; set; }
+        public int minorVersion { get; set; }
     }
 
    

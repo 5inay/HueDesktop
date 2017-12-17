@@ -30,6 +30,7 @@ namespace HueDesktop
             rtbBridgeDetails.AppendText(Resources.BRIDGE_MNUM + ourHueBridge.bridgeDeviceSpec.bridgeModelNumber + Environment.NewLine);
             rtbBridgeDetails.AppendText(Resources.BRIDGE_SNUM + ourHueBridge.bridgeDeviceSpec.bridgeSerialNumber + Environment.NewLine);
             rtbBridgeDetails.AppendText(Resources.BRIDGE_URL + ourHueBridge.bridgeURLBase.Replace(@"http://", "").Replace(@":80/", "") + Environment.NewLine);
+            rtbBridgeDetails.AppendText(Resources.BRIDGE_VERSION + ourHueBridge.bridgeSpecVersion.majorVersion + "." + ourHueBridge.bridgeSpecVersion.minorVersion + Environment.NewLine);
         }
 
         private void btnClose_Click(object sender, EventArgs e)

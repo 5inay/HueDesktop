@@ -133,6 +133,15 @@ namespace HueDesktop.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Version Number:.
+        /// </summary>
+        internal static string BRIDGE_VERSION {
+            get {
+                return ResourceManager.GetString("BRIDGE_VERSION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to hueBridgeDescription.xml.
         /// </summary>
         internal static string BRIDGE_XML {

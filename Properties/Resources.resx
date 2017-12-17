@@ -190,4 +190,7 @@
   <data name="TEXT_OFF" xml:space="preserve">
     <value>OFF</value>
   </data>
+  <data name="BRIDGE_VERSION" xml:space="preserve">
+    <value>Version Number:</value>
+  </data>
 </root>
