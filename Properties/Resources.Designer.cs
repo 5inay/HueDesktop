@@ -233,6 +233,15 @@ namespace HueDesktop.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There was an error sending name details to the bridge..
+        /// </summary>
+        internal static string ERROR4 {
+            get {
+                return ResourceManager.GetString("ERROR4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap helper_icon {

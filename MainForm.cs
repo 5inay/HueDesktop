@@ -538,6 +538,22 @@ namespace HueDesktop
                 MessageBox.Show(Resources.ERROR03, "Lights not paired", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private async void onCellText_Changed(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIdx = e.RowIndex + 1;
+            string newLightName = dgvLights.Rows[e.RowIndex].Cells["name"].Value.ToString();
+            RESTRequests r = new RESTRequests(theHueBridge.bridgeURLBase.Replace("http://", "").Replace(@":80/", ""));
+            string result = await r.PUT("/api/" + APIKey + "/lights/" + rowIdx, "{\"name\":\"" + newLightName + "\"}", Encoding.UTF8, Resources.BODY_TYPE_JSON);
+
+            if (result == null || result.Contains("error") || result == "")
+            {
+                MessageBox.Show(Resources.ERROR03, "Name-change Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            populateBridgeLights();
+        }
         #endregion //CAMERA...LIGHTS...
     }
 }

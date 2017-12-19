@@ -48,6 +48,7 @@
             this.gbSelectedLightDetails = new System.Windows.Forms.GroupBox();
             this.pnlLightCtrl = new System.Windows.Forms.Panel();
             this.btnColorChange = new System.Windows.Forms.Button();
+            this.lblBrightnessValue = new System.Windows.Forms.Label();
             this.lblMax = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tbBrightness = new System.Windows.Forms.TrackBar();
@@ -64,7 +65,6 @@
             this.lblBridgeCnx = new System.Windows.Forms.Label();
             this.lblBridge = new System.Windows.Forms.Label();
             this.colorPicker = new System.Windows.Forms.ColorDialog();
-            this.lblBrightnessValue = new System.Windows.Forms.Label();
             this.gbConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLights)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lightBindingSource)).BeginInit();
@@ -124,7 +124,6 @@
             this.dgvLights.Location = new System.Drawing.Point(11, 25);
             this.dgvLights.MultiSelect = false;
             this.dgvLights.Name = "dgvLights";
-            this.dgvLights.ReadOnly = true;
             this.dgvLights.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -141,6 +140,7 @@
             this.dgvLights.Size = new System.Drawing.Size(171, 156);
             this.dgvLights.TabIndex = 2;
             this.dgvLights.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.onLightSelectionChanged);
+            this.dgvLights.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.onCellText_Changed);
             // 
             // label3
             // 
@@ -279,6 +279,17 @@
             this.btnColorChange.TabIndex = 4;
             this.btnColorChange.UseVisualStyleBackColor = false;
             this.btnColorChange.Click += new System.EventHandler(this.btnColorChange_Click);
+            // 
+            // lblBrightnessValue
+            // 
+            this.lblBrightnessValue.AutoSize = true;
+            this.lblBrightnessValue.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBrightnessValue.Location = new System.Drawing.Point(353, 11);
+            this.lblBrightnessValue.MaximumSize = new System.Drawing.Size(380, 100);
+            this.lblBrightnessValue.Name = "lblBrightnessValue";
+            this.lblBrightnessValue.Size = new System.Drawing.Size(33, 15);
+            this.lblBrightnessValue.TabIndex = 1;
+            this.lblBrightnessValue.Text = "MAX";
             // 
             // lblMax
             // 
@@ -452,17 +463,6 @@
             // 
             this.colorPicker.AnyColor = true;
             this.colorPicker.FullOpen = true;
-            // 
-            // lblBrightnessValue
-            // 
-            this.lblBrightnessValue.AutoSize = true;
-            this.lblBrightnessValue.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBrightnessValue.Location = new System.Drawing.Point(353, 11);
-            this.lblBrightnessValue.MaximumSize = new System.Drawing.Size(380, 100);
-            this.lblBrightnessValue.Name = "lblBrightnessValue";
-            this.lblBrightnessValue.Size = new System.Drawing.Size(33, 15);
-            this.lblBrightnessValue.TabIndex = 1;
-            this.lblBrightnessValue.Text = "MAX";
             // 
             // MainForm
             // 

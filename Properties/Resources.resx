@@ -193,4 +193,7 @@
   <data name="BRIDGE_VERSION" xml:space="preserve">
     <value>Version Number:</value>
   </data>
+  <data name="ERROR4" xml:space="preserve">
+    <value>There was an error sending name details to the bridge.</value>
+  </data>
 </root>
