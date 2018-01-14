@@ -29,10 +29,12 @@ namespace HueDesktop
         private volatile string APIKey;
         
         private HueLight[] allLights;
-        private int lightIDX = 0;
-
+        
         private string bridgeXmlPath;
         private string apiKeyPath;
+
+        private int[] lightIndices;
+        private int MAX_LIGHTS_PER_BRIDGE = 20;
         #endregion //MEMBER_VARS
 
 
@@ -54,6 +56,8 @@ namespace HueDesktop
             setupUI();
             initPaths();
             theHueBridge = new HueBridge();
+
+            lightIndices = new int[MAX_LIGHTS_PER_BRIDGE];
 
             
             if (checkForExistingKey())
@@ -339,7 +343,7 @@ namespace HueDesktop
         {
             if (allLights == null || allLights[0].modelid == null || dgvLights.CurrentCell == null) return;
 
-            lightIDX = dgvLights.CurrentCell.RowIndex;
+            int lightIDX = lightIndices[dgvLights.CurrentCell.RowIndex];
             if (lightIDX >= 0)
             {
                 logger.Info("Hue Light index = " + lightIDX);
@@ -351,7 +355,7 @@ namespace HueDesktop
 
             //Get current status of light
             RESTRequests r = new RESTRequests(theHueBridge.bridgeURLBase.Replace("http://", "").Replace(@":80/", ""));
-            string singleLight = await r.GET("/api/" + APIKey + "/lights/" + (lightIDX + 1));
+            string singleLight = await r.GET("/api/" + APIKey + "/lights/" + (lightIDX));
 
             JObject singleLightObj = JObject.Parse(singleLight);
             //IList<JToken> pairedLight = singleLightObj.Children().ToList(); //MAGIC!! :)
@@ -360,7 +364,7 @@ namespace HueDesktop
             String ld = String.Format(Resources.LIGHT_DETAILS, selectedLight.name, (selectedLight.modelid != null &&
                 selectedLight.modelid.Contains("LCT")) ? "Hue Lamp" : "Hue Lightstrip", (selectedLight.state.on) ? "ON" : "OFF");
             
-            if (allLights[lightIDX].modelid.Contains("LCT"))
+            if (allLights[dgvLights.CurrentCell.RowIndex].modelid.Contains("LCT"))
             {
                 btnColorChange.BackgroundImage = Resources.bulb;
             }
@@ -397,8 +401,9 @@ namespace HueDesktop
                 ColorConverter.colorToXY(r, g, b, out X, out Y);
                 logger.Info("Setting color ==> " + X + "," + Y);
 
+                int lightIDX = lightIndices[dgvLights.CurrentCell.RowIndex];
                 RESTRequests rest = new RESTRequests(theHueBridge.bridgeURLBase.Replace("http://", "").Replace(@":80/", ""));
-                string singleLight = await rest.GET("/api/" + APIKey + "/lights/" + (lightIDX + 1));
+                string singleLight = await rest.GET("/api/" + APIKey + "/lights/" + (lightIDX));
 
                 JObject singleLightObj = JObject.Parse(singleLight);
                 HueLight selectedLight = JsonConvert.DeserializeObject<HueLight>(singleLightObj.ToString());
@@ -407,11 +412,11 @@ namespace HueDesktop
 
                 if (!selectedLight.state.on)
                 {
-                    await rest.PUT("/api/" + APIKey + "/lights/" + (lightIDX + 1) + "/state", "{\"on\":true, \"xy\":[" + X + "," + Y + "]}", Encoding.UTF8, Resources.BODY_TYPE_JSON);
+                    await rest.PUT("/api/" + APIKey + "/lights/" + (lightIDX) + "/state", "{\"on\":true, \"xy\":[" + X + "," + Y + "]}", Encoding.UTF8, Resources.BODY_TYPE_JSON);
                 }
                 else
                 {
-                    await rest.PUT("/api/" + APIKey + "/lights/" + (lightIDX + 1) + "/state", "{\"xy\":[" + X + "," + Y + "]}", Encoding.UTF8, Resources.BODY_TYPE_JSON);
+                    await rest.PUT("/api/" + APIKey + "/lights/" + (lightIDX) + "/state", "{\"xy\":[" + X + "," + Y + "]}", Encoding.UTF8, Resources.BODY_TYPE_JSON);
                 }
 
                 tbBrightness.Value = selectedLight.state.bri;
@@ -420,25 +425,26 @@ namespace HueDesktop
 
         private async void onBrightness_ValueChanged(object sender, MouseEventArgs e)
         {
+            int lightIDX = lightIndices[dgvLights.CurrentCell.RowIndex];
             RESTRequests r = new RESTRequests(theHueBridge.bridgeURLBase.Replace("http://", "").Replace(@":80/", ""));
-            string singleLight = await r.GET("/api/" + APIKey + "/lights/" + (lightIDX + 1));
+            string singleLight = await r.GET("/api/" + APIKey + "/lights/" + (lightIDX));
 
             JObject singleLightObj = JObject.Parse(singleLight);
             HueLight selectedLight = JsonConvert.DeserializeObject<HueLight>(singleLightObj.ToString());
 
             if (tbBrightness.Value == tbBrightness.Minimum)
             {
-                await r.PUT("/api/" + APIKey + "/lights/" + (lightIDX + 1) + "/state", "{\"on\":false}", Encoding.UTF8, Resources.BODY_TYPE_JSON);
+                await r.PUT("/api/" + APIKey + "/lights/" + (lightIDX) + "/state", "{\"on\":false}", Encoding.UTF8, Resources.BODY_TYPE_JSON);
                 return;
             }
 
             if (!selectedLight.state.on)
             {
-                await r.PUT("/api/" + APIKey + "/lights/" + (lightIDX + 1) + "/state", "{\"on\":true, \"bri\":" + tbBrightness.Value + "}", Encoding.UTF8, Resources.BODY_TYPE_JSON);
+                await r.PUT("/api/" + APIKey + "/lights/" + (lightIDX) + "/state", "{\"on\":true, \"bri\":" + tbBrightness.Value + "}", Encoding.UTF8, Resources.BODY_TYPE_JSON);
             }
             else
             {
-                await r.PUT("/api/" + APIKey + "/lights/" + (lightIDX + 1) + "/state", "{\"bri\":" + tbBrightness.Value + "}", Encoding.UTF8, Resources.BODY_TYPE_JSON);
+                await r.PUT("/api/" + APIKey + "/lights/" + (lightIDX) + "/state", "{\"bri\":" + tbBrightness.Value + "}", Encoding.UTF8, Resources.BODY_TYPE_JSON);
             }
         }
 
@@ -507,8 +513,18 @@ namespace HueDesktop
             // Looked it up here (https://stackoverflow.com/questions/41092239/json-deserialization-not-deserializing) 
             // and followed the directions by Mohammed Abulssa and Mark Schultheiss to get the right mapping between 
             // JSON and C# data structure
+            // Further... when the light indices were changed in the bridge, due to user manually deleting and re-adding
+            // lights (1,2,3,4,5 became 5,6,7,8,9) looked up here - https://stackoverflow.com/questions/21002297/getting-the-name-key-of-a-jtoken-with-json-net
+            // to get the right indices for *future* REST calls. Storing these in lightIndices
             JObject lightObj = JObject.Parse(result);
-            IList<JToken> allPaired = lightObj.Children().Children().ToList(); //MAGIC!! :)
+            IList<JToken> idxObj = lightObj.Children().ToList();
+            int j = 0;
+            foreach(var pair in lightObj)
+            {
+                Int32.TryParse(pair.Key, out lightIndices[j]);
+                j++;
+            }
+            IList<JToken> allPaired = idxObj.Children().ToList(); //MAGIC!! :)
             allLights = new HueLight[allPaired.Count];
 
             int i = 0;
