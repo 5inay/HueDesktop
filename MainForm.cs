@@ -301,10 +301,10 @@ namespace HueDesktop
         private async void btnAllOn_Click(object sender, EventArgs e)
         {
             RESTRequests r = new RESTRequests(theHueBridge.bridgeURLBase.Replace("http://", "").Replace(@":80/", ""));
-            int i = 1;
+            int i = 0;
             foreach (HueLight hl in allLights)
             {
-                string result = await r.PUT("/api/" + APIKey + "/lights/"+ i + "/state", "{\"on\":true}", Encoding.UTF8, Resources.BODY_TYPE_JSON);
+                string result = await r.PUT("/api/" + APIKey + "/lights/"+ lightIndices[i] + "/state", "{\"on\":true}", Encoding.UTF8, Resources.BODY_TYPE_JSON);
                 i++;
             }
         }
@@ -312,10 +312,10 @@ namespace HueDesktop
         private async void btnAllOff_Click(object sender, EventArgs e)
         {
             RESTRequests r = new RESTRequests(theHueBridge.bridgeURLBase.Replace("http://", "").Replace(@":80/", ""));
-            int i = 1;
+            int i = 0;
             foreach (HueLight hl in allLights)
             {
-                string result = await r.PUT("/api/" + APIKey + "/lights/" + i + "/state", "{\"on\":false}", Encoding.UTF8, Resources.BODY_TYPE_JSON);
+                string result = await r.PUT("/api/" + APIKey + "/lights/" + lightIndices[i] + "/state", "{\"on\":false}", Encoding.UTF8, Resources.BODY_TYPE_JSON);
                 i++;
             }
         }
