@@ -49,7 +49,6 @@
             this.pnlLightCtrl = new System.Windows.Forms.Panel();
             this.btnColorChange = new System.Windows.Forms.Button();
             this.lblBrightnessValue = new System.Windows.Forms.Label();
-            this.lblMax = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tbBrightness = new System.Windows.Forms.TrackBar();
             this.lblLD_Name = new System.Windows.Forms.Label();
@@ -80,7 +79,7 @@
             // 
             // btnConnect
             // 
-            this.btnConnect.Location = new System.Drawing.Point(157, 73);
+            this.btnConnect.Location = new System.Drawing.Point(164, 77);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(88, 23);
             this.btnConnect.TabIndex = 0;
@@ -94,9 +93,9 @@
             this.gbConnect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.gbConnect.Controls.Add(this.label1);
             this.gbConnect.Controls.Add(this.btnConnect);
-            this.gbConnect.Location = new System.Drawing.Point(204, 10);
+            this.gbConnect.Location = new System.Drawing.Point(204, 6);
             this.gbConnect.Name = "gbConnect";
-            this.gbConnect.Size = new System.Drawing.Size(258, 106);
+            this.gbConnect.Size = new System.Drawing.Size(258, 110);
             this.gbConnect.TabIndex = 1;
             this.gbConnect.TabStop = false;
             this.gbConnect.Text = "CONNECT (Required only once)";
@@ -104,9 +103,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(34, 16);
+            this.label1.Location = new System.Drawing.Point(9, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(211, 26);
+            this.label1.Size = new System.Drawing.Size(243, 30);
             this.label1.TabIndex = 1;
             this.label1.Text = "Press the button on your Philips Hue Bridge\r\nand Click on \"Connect\" button below." +
     "";
@@ -137,20 +136,19 @@
             this.dgvLights.RowHeadersVisible = false;
             this.dgvLights.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLights.ShowEditingIcon = false;
-            this.dgvLights.Size = new System.Drawing.Size(171, 156);
+            this.dgvLights.Size = new System.Drawing.Size(171, 149);
             this.dgvLights.TabIndex = 2;
             this.dgvLights.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.onLightSelectionChanged);
             this.dgvLights.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.onCellText_Changed);
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 226);
+            this.label3.Location = new System.Drawing.Point(6, 220);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(175, 39);
+            this.label3.Size = new System.Drawing.Size(171, 66);
             this.label3.TabIndex = 1;
-            this.label3.Text = "Click Refresh button to see all lights\r\npaired with this bridge.\r\nSelect a light " +
-    "to modify its settings.";
+            this.label3.Text = "Click Refresh button to see all lights paired with this bridge.\r\nSelect a light t" +
+    "o modify its settings.";
             // 
             // gbLights
             // 
@@ -159,7 +157,7 @@
             this.gbLights.Controls.Add(this.dgvLights);
             this.gbLights.Location = new System.Drawing.Point(10, 118);
             this.gbLights.Name = "gbLights";
-            this.gbLights.Size = new System.Drawing.Size(188, 270);
+            this.gbLights.Size = new System.Drawing.Size(188, 299);
             this.gbLights.TabIndex = 1;
             this.gbLights.TabStop = false;
             this.gbLights.Text = "Connected Hue Lights";
@@ -167,7 +165,7 @@
             // btnRefreshLights
             // 
             this.btnRefreshLights.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefreshLights.Location = new System.Drawing.Point(83, 187);
+            this.btnRefreshLights.Location = new System.Drawing.Point(83, 180);
             this.btnRefreshLights.Name = "btnRefreshLights";
             this.btnRefreshLights.Size = new System.Drawing.Size(95, 37);
             this.btnRefreshLights.TabIndex = 3;
@@ -208,7 +206,7 @@
             // 
             // pbFindingHueBridge
             // 
-            this.pbFindingHueBridge.Location = new System.Drawing.Point(12, 433);
+            this.pbFindingHueBridge.Location = new System.Drawing.Point(17, 451);
             this.pbFindingHueBridge.MarqueeAnimationSpeed = 50;
             this.pbFindingHueBridge.Name = "pbFindingHueBridge";
             this.pbFindingHueBridge.Size = new System.Drawing.Size(639, 12);
@@ -227,7 +225,7 @@
             this.pnlMain.Controls.Add(this.gbAllOnOff);
             this.pnlMain.Location = new System.Drawing.Point(12, 12);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(639, 402);
+            this.pnlMain.Size = new System.Drawing.Size(639, 420);
             this.pnlMain.TabIndex = 3;
             // 
             // pictureBox1
@@ -245,7 +243,7 @@
             this.gbSelectedLightDetails.Controls.Add(this.pnlLightCtrl);
             this.gbSelectedLightDetails.Location = new System.Drawing.Point(204, 118);
             this.gbSelectedLightDetails.Name = "gbSelectedLightDetails";
-            this.gbSelectedLightDetails.Size = new System.Drawing.Size(425, 270);
+            this.gbSelectedLightDetails.Size = new System.Drawing.Size(425, 299);
             this.gbSelectedLightDetails.TabIndex = 1;
             this.gbSelectedLightDetails.TabStop = false;
             this.gbSelectedLightDetails.Text = "Selected Hue Light Details and Control";
@@ -254,7 +252,6 @@
             // 
             this.pnlLightCtrl.Controls.Add(this.btnColorChange);
             this.pnlLightCtrl.Controls.Add(this.lblBrightnessValue);
-            this.pnlLightCtrl.Controls.Add(this.lblMax);
             this.pnlLightCtrl.Controls.Add(this.label2);
             this.pnlLightCtrl.Controls.Add(this.tbBrightness);
             this.pnlLightCtrl.Controls.Add(this.lblLD_Name);
@@ -264,7 +261,7 @@
             this.pnlLightCtrl.Controls.Add(this.lblLD_Manufacturer);
             this.pnlLightCtrl.Location = new System.Drawing.Point(10, 14);
             this.pnlLightCtrl.Name = "pnlLightCtrl";
-            this.pnlLightCtrl.Size = new System.Drawing.Size(407, 250);
+            this.pnlLightCtrl.Size = new System.Drawing.Size(407, 279);
             this.pnlLightCtrl.TabIndex = 4;
             this.pnlLightCtrl.Visible = false;
             // 
@@ -273,7 +270,7 @@
             this.btnColorChange.BackColor = System.Drawing.SystemColors.Control;
             this.btnColorChange.BackgroundImage = global::HueDesktop.Properties.Resources.bulb;
             this.btnColorChange.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnColorChange.Location = new System.Drawing.Point(201, 5);
+            this.btnColorChange.Location = new System.Drawing.Point(245, 11);
             this.btnColorChange.Name = "btnColorChange";
             this.btnColorChange.Size = new System.Drawing.Size(70, 70);
             this.btnColorChange.TabIndex = 4;
@@ -284,23 +281,12 @@
             // 
             this.lblBrightnessValue.AutoSize = true;
             this.lblBrightnessValue.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBrightnessValue.Location = new System.Drawing.Point(353, 11);
+            this.lblBrightnessValue.Location = new System.Drawing.Point(358, 6);
             this.lblBrightnessValue.MaximumSize = new System.Drawing.Size(380, 100);
             this.lblBrightnessValue.Name = "lblBrightnessValue";
-            this.lblBrightnessValue.Size = new System.Drawing.Size(33, 15);
+            this.lblBrightnessValue.Size = new System.Drawing.Size(37, 17);
             this.lblBrightnessValue.TabIndex = 1;
             this.lblBrightnessValue.Text = "MAX";
-            // 
-            // lblMax
-            // 
-            this.lblMax.AutoSize = true;
-            this.lblMax.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMax.Location = new System.Drawing.Point(317, 38);
-            this.lblMax.MaximumSize = new System.Drawing.Size(380, 100);
-            this.lblMax.Name = "lblMax";
-            this.lblMax.Size = new System.Drawing.Size(33, 15);
-            this.lblMax.TabIndex = 1;
-            this.lblMax.Text = "MAX";
             // 
             // label2
             // 
@@ -309,19 +295,19 @@
             this.label2.Location = new System.Drawing.Point(13, 21);
             this.label2.MaximumSize = new System.Drawing.Size(380, 100);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(176, 30);
+            this.label2.Size = new System.Drawing.Size(203, 34);
             this.label2.TabIndex = 1;
             this.label2.Text = "Click  on  icon  to  change  color\r\nUse slider to change brightness";
             // 
             // tbBrightness
             // 
             this.tbBrightness.LargeChange = 50;
-            this.tbBrightness.Location = new System.Drawing.Point(356, 38);
+            this.tbBrightness.Location = new System.Drawing.Point(356, 33);
             this.tbBrightness.Maximum = 254;
             this.tbBrightness.Minimum = 1;
             this.tbBrightness.Name = "tbBrightness";
             this.tbBrightness.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.tbBrightness.Size = new System.Drawing.Size(40, 199);
+            this.tbBrightness.Size = new System.Drawing.Size(37, 213);
             this.tbBrightness.SmallChange = 10;
             this.tbBrightness.TabIndex = 3;
             this.tbBrightness.TickFrequency = 12;
@@ -337,7 +323,7 @@
             this.lblLD_Name.Location = new System.Drawing.Point(71, 89);
             this.lblLD_Name.MaximumSize = new System.Drawing.Size(380, 100);
             this.lblLD_Name.Name = "lblLD_Name";
-            this.lblLD_Name.Size = new System.Drawing.Size(57, 21);
+            this.lblLD_Name.Size = new System.Drawing.Size(60, 23);
             this.lblLD_Name.TabIndex = 1;
             this.lblLD_Name.Text = "Name:";
             // 
@@ -345,10 +331,10 @@
             // 
             this.lblLD_Model.AutoSize = true;
             this.lblLD_Model.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLD_Model.Location = new System.Drawing.Point(66, 131);
+            this.lblLD_Model.Location = new System.Drawing.Point(66, 139);
             this.lblLD_Model.MaximumSize = new System.Drawing.Size(380, 100);
             this.lblLD_Model.Name = "lblLD_Model";
-            this.lblLD_Model.Size = new System.Drawing.Size(62, 21);
+            this.lblLD_Model.Size = new System.Drawing.Size(63, 23);
             this.lblLD_Model.TabIndex = 1;
             this.lblLD_Model.Text = "Model:";
             // 
@@ -356,10 +342,10 @@
             // 
             this.lblMin.AutoSize = true;
             this.lblMin.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMin.Location = new System.Drawing.Point(322, 220);
+            this.lblMin.Location = new System.Drawing.Point(358, 255);
             this.lblMin.MaximumSize = new System.Drawing.Size(380, 100);
             this.lblMin.Name = "lblMin";
-            this.lblMin.Size = new System.Drawing.Size(28, 15);
+            this.lblMin.Size = new System.Drawing.Size(32, 17);
             this.lblMin.TabIndex = 1;
             this.lblMin.Text = "OFF";
             // 
@@ -367,10 +353,10 @@
             // 
             this.lblLD_Type.AutoSize = true;
             this.lblLD_Type.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLD_Type.Location = new System.Drawing.Point(75, 215);
+            this.lblLD_Type.Location = new System.Drawing.Point(75, 239);
             this.lblLD_Type.MaximumSize = new System.Drawing.Size(380, 100);
             this.lblLD_Type.Name = "lblLD_Type";
-            this.lblLD_Type.Size = new System.Drawing.Size(53, 21);
+            this.lblLD_Type.Size = new System.Drawing.Size(55, 23);
             this.lblLD_Type.TabIndex = 1;
             this.lblLD_Type.Text = "Type: ";
             // 
@@ -378,10 +364,10 @@
             // 
             this.lblLD_Manufacturer.AutoSize = true;
             this.lblLD_Manufacturer.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLD_Manufacturer.Location = new System.Drawing.Point(14, 173);
+            this.lblLD_Manufacturer.Location = new System.Drawing.Point(14, 189);
             this.lblLD_Manufacturer.MaximumSize = new System.Drawing.Size(380, 100);
             this.lblLD_Manufacturer.Name = "lblLD_Manufacturer";
-            this.lblLD_Manufacturer.Size = new System.Drawing.Size(114, 21);
+            this.lblLD_Manufacturer.Size = new System.Drawing.Size(120, 23);
             this.lblLD_Manufacturer.TabIndex = 1;
             this.lblLD_Manufacturer.Text = "Manufacturer:";
             // 
@@ -421,20 +407,19 @@
             // lblBridgeID
             // 
             this.lblBridgeID.AutoSize = true;
-            this.lblBridgeID.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBridgeID.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.92F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBridgeID.Location = new System.Drawing.Point(6, 54);
             this.lblBridgeID.Name = "lblBridgeID";
-            this.lblBridgeID.Size = new System.Drawing.Size(28, 13);
+            this.lblBridgeID.Size = new System.Drawing.Size(25, 15);
             this.lblBridgeID.TabIndex = 1;
             this.lblBridgeID.Text = "ID: ";
             // 
             // lblBridgeName
             // 
-            this.lblBridgeName.AutoSize = true;
-            this.lblBridgeName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBridgeName.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.92F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBridgeName.Location = new System.Drawing.Point(6, 20);
             this.lblBridgeName.Name = "lblBridgeName";
-            this.lblBridgeName.Size = new System.Drawing.Size(43, 13);
+            this.lblBridgeName.Size = new System.Drawing.Size(171, 34);
             this.lblBridgeName.TabIndex = 1;
             this.lblBridgeName.Text = "Name:";
             // 
@@ -445,7 +430,7 @@
             this.lblBridgeCnx.Location = new System.Drawing.Point(248, 76);
             this.lblBridgeCnx.MaximumSize = new System.Drawing.Size(380, 100);
             this.lblBridgeCnx.Name = "lblBridgeCnx";
-            this.lblBridgeCnx.Size = new System.Drawing.Size(173, 26);
+            this.lblBridgeCnx.Size = new System.Drawing.Size(176, 30);
             this.lblBridgeCnx.TabIndex = 1;
             this.lblBridgeCnx.Text = "Bridge Connected. \r\nClick Refresh to see paired lights";
             this.lblBridgeCnx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -453,9 +438,9 @@
             // lblBridge
             // 
             this.lblBridge.AutoSize = true;
-            this.lblBridge.Location = new System.Drawing.Point(270, 417);
+            this.lblBridge.Location = new System.Drawing.Point(275, 435);
             this.lblBridge.Name = "lblBridge";
-            this.lblBridge.Size = new System.Drawing.Size(106, 13);
+            this.lblBridge.Size = new System.Drawing.Size(122, 15);
             this.lblBridge.TabIndex = 1;
             this.lblBridge.Text = "Finding Hue Bridge...\r\n";
             // 
@@ -468,15 +453,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(664, 459);
+            this.ClientSize = new System.Drawing.Size(670, 470);
             this.Controls.Add(this.lblBridge);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.pbFindingHueBridge);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(670, 488);
-            this.MinimumSize = new System.Drawing.Size(670, 488);
+            this.MaximumSize = new System.Drawing.Size(680, 500);
+            this.MinimumSize = new System.Drawing.Size(680, 500);
             this.Name = "MainForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -487,7 +472,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvLights)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lightBindingSource)).EndInit();
             this.gbLights.ResumeLayout(false);
-            this.gbLights.PerformLayout();
             this.gbAllOnOff.ResumeLayout(false);
             this.pnlMain.ResumeLayout(false);
             this.pnlMain.PerformLayout();
@@ -532,7 +516,6 @@
         private System.Windows.Forms.Label lblLD_Name;
         private System.Windows.Forms.Label lblLD_Type;
         private System.Windows.Forms.TrackBar tbBrightness;
-        private System.Windows.Forms.Label lblMax;
         private System.Windows.Forms.Label lblMin;
         private System.Windows.Forms.Panel pnlLightCtrl;
         private System.Windows.Forms.Button btnColorChange;
