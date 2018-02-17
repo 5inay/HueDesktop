@@ -67,10 +67,15 @@ namespace HueDesktop
             }
             else
             {
-                gbConnect.Visible = true;
-                btnConnect.Enabled = true;
-                findBridges();
+                resetApp();
             }
+        }
+
+        private void resetApp()
+        {
+            gbConnect.Visible = true;
+            btnConnect.Enabled = true;
+            findBridges();
         }
 
 
@@ -503,7 +508,7 @@ namespace HueDesktop
             RESTRequests r = new RESTRequests(endpoint);
             string result = await r.GET("/api/" + APIKey + "/lights");
 
-            if (result == null || result.Contains("error") || result == "")
+            if (result == null || result.Contains("error") || result == "" || result == "{}")
             {
                 MessageBox.Show(Resources.ERROR03, "Lights not paired", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -571,5 +576,21 @@ namespace HueDesktop
             populateBridgeLights();
         }
         #endregion //CAMERA...LIGHTS...
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            if(MessageBox.Show("Are you sure you want to reset the app? (Select Yes if the bridge has been reset or the lights are not populating)",
+                "RESET Confirmation",
+                MessageBoxButtons.YesNo, 
+                MessageBoxIcon.Question ) == DialogResult.No)
+            {
+                return;
+            }
+
+            if (File.Exists(apiKeyPath)) { File.Delete(apiKeyPath); }
+            if (File.Exists(bridgeXmlPath)) { File.Delete(bridgeXmlPath); }
+
+            resetApp();
+        }
     }
 }

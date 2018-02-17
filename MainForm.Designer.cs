@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.btnConnect = new System.Windows.Forms.Button();
             this.gbConnect = new System.Windows.Forms.GroupBox();
@@ -64,6 +64,8 @@
             this.lblBridgeCnx = new System.Windows.Forms.Label();
             this.lblBridge = new System.Windows.Forms.Label();
             this.colorPicker = new System.Windows.Forms.ColorDialog();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.gbConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLights)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lightBindingSource)).BeginInit();
@@ -124,15 +126,15 @@
             this.dgvLights.MultiSelect = false;
             this.dgvLights.Name = "dgvLights";
             this.dgvLights.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.NullValue = "1";
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvLights.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.NullValue = "1";
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLights.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvLights.RowHeadersVisible = false;
             this.dgvLights.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLights.ShowEditingIcon = false;
@@ -175,9 +177,9 @@
             // 
             // btnAllOn
             // 
-            this.btnAllOn.Location = new System.Drawing.Point(13, 24);
+            this.btnAllOn.Location = new System.Drawing.Point(13, 21);
             this.btnAllOn.Name = "btnAllOn";
-            this.btnAllOn.Size = new System.Drawing.Size(67, 60);
+            this.btnAllOn.Size = new System.Drawing.Size(67, 30);
             this.btnAllOn.TabIndex = 0;
             this.btnAllOn.Text = "ALL ON";
             this.btnAllOn.UseVisualStyleBackColor = true;
@@ -185,9 +187,9 @@
             // 
             // btnAllOff
             // 
-            this.btnAllOff.Location = new System.Drawing.Point(86, 24);
+            this.btnAllOff.Location = new System.Drawing.Point(86, 21);
             this.btnAllOff.Name = "btnAllOff";
-            this.btnAllOff.Size = new System.Drawing.Size(67, 60);
+            this.btnAllOff.Size = new System.Drawing.Size(67, 30);
             this.btnAllOff.TabIndex = 0;
             this.btnAllOff.Text = "ALL OFF";
             this.btnAllOff.UseVisualStyleBackColor = true;
@@ -199,7 +201,7 @@
             this.gbAllOnOff.Controls.Add(this.btnAllOff);
             this.gbAllOnOff.Location = new System.Drawing.Point(468, 6);
             this.gbAllOnOff.Name = "gbAllOnOff";
-            this.gbAllOnOff.Size = new System.Drawing.Size(161, 106);
+            this.gbAllOnOff.Size = new System.Drawing.Size(161, 59);
             this.gbAllOnOff.TabIndex = 1;
             this.gbAllOnOff.TabStop = false;
             this.gbAllOnOff.Text = "Group On Off Control";
@@ -216,7 +218,9 @@
             // 
             // pnlMain
             // 
+            this.pnlMain.Controls.Add(this.label4);
             this.pnlMain.Controls.Add(this.gbConnect);
+            this.pnlMain.Controls.Add(this.button1);
             this.pnlMain.Controls.Add(this.pictureBox1);
             this.pnlMain.Controls.Add(this.gbSelectedLightDetails);
             this.pnlMain.Controls.Add(this.gbLights);
@@ -270,7 +274,7 @@
             this.btnColorChange.BackColor = System.Drawing.SystemColors.Control;
             this.btnColorChange.BackgroundImage = global::HueDesktop.Properties.Resources.bulb;
             this.btnColorChange.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnColorChange.Location = new System.Drawing.Point(245, 11);
+            this.btnColorChange.Location = new System.Drawing.Point(254, 21);
             this.btnColorChange.Name = "btnColorChange";
             this.btnColorChange.Size = new System.Drawing.Size(70, 70);
             this.btnColorChange.TabIndex = 4;
@@ -449,6 +453,25 @@
             this.colorPicker.AnyColor = true;
             this.colorPicker.FullOpen = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(503, 93);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(88, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "RESET APP";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(474, 72);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(156, 15);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Click in case of bridge reset";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -522,6 +545,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblBridgeCnx;
         private System.Windows.Forms.Label lblBrightnessValue;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button1;
     }
 }
 
