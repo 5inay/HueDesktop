@@ -16,6 +16,7 @@ HueDesktop is a simple Windows desktop application which can be used to **contro
 4. Press Hue Bridge button once and click **Connect** in UI to perform a **ONE-TIME** pairing operation.
 5. Select any light in the list and change brightness. 
 6. Click **REFRESH** button in case the bridge is connected, but no lights are displayed.
+7. Click **RESET APP** in case a hard-reset is performed on the bridge (recessed bridge button on the mount-side of bridge pressed and held for 10 seconds).
 
 ## Limitations
 1. Application has only been tested with the following combinations/versions of hardware
