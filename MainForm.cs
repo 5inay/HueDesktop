@@ -104,10 +104,15 @@ namespace HueDesktop
 
         private void initPaths()
         {
-            bridgeXmlPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) +
-                                @"\HueDesktop\" + Resources.BRIDGE_XML;
-            apiKeyPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) +
-                                @"\HueDesktop\" + Resources.KEY_FILE;
+            string keyXmlFolder = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\HueDesktop\";
+            
+            if (!Directory.Exists(keyXmlFolder))
+            {
+                DirectoryInfo di = Directory.CreateDirectory(keyXmlFolder);
+            }
+
+            bridgeXmlPath = keyXmlFolder + Resources.BRIDGE_XML;
+            apiKeyPath = keyXmlFolder + Resources.KEY_FILE;
         }
         #endregion  //INITIALIZATION
 
