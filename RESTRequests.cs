@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading;
@@ -35,10 +36,18 @@ namespace HueDesktop
         public async Task<string> GET(string addendum)
         {
             string getEndpoint = ourIP + addendum;
-            HttpResponseMessage response = await client.GetAsync(getEndpoint);
-            if (response.StatusCode == HttpStatusCode.OK)
+            
+            try
             {
-                return await response.Content.ReadAsStringAsync();
+                HttpResponseMessage response = await client.GetAsync(getEndpoint);
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    return await response.Content.ReadAsStringAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.InnerException.Message;
             }
 
             return "";

@@ -518,6 +518,11 @@ namespace HueDesktop
                 MessageBox.Show(Resources.ERROR03, "Lights not paired", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            else if (result == Resources.INTERNET_DOWN)
+            {
+                MessageBox.Show(Resources.ERROR05, "Network Down!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             // Parsing this result proved to be trickier than expected 
             // Looked it up here (https://stackoverflow.com/questions/41092239/json-deserialization-not-deserializing) 

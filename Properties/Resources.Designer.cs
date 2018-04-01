@@ -233,6 +233,15 @@ namespace HueDesktop.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please check if your PC is connected to the same network as the bridge.
+        /// </summary>
+        internal static string ERROR05 {
+            get {
+                return ResourceManager.GetString("ERROR05", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There was an error sending name details to the bridge..
         /// </summary>
         internal static string ERROR4 {
@@ -248,6 +257,15 @@ namespace HueDesktop.Properties {
             get {
                 object obj = ResourceManager.GetObject("helper_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to connect to the remote server.
+        /// </summary>
+        internal static string INTERNET_DOWN {
+            get {
+                return ResourceManager.GetString("INTERNET_DOWN", resourceCulture);
             }
         }
         
