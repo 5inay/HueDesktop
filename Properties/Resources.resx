@@ -199,7 +199,7 @@
   <data name="ERROR05" xml:space="preserve">
     <value>Please check if your PC is connected to the same network as the bridge</value>
   </data>
-  <data name="INTERNET_DOWN" xml:space="preserve">
+  <data name="LAN_DOWN" xml:space="preserve">
     <value>Unable to connect to the remote server</value>
   </data>
 </root>

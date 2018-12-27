@@ -261,20 +261,20 @@ namespace HueDesktop.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unable to connect to the remote server.
-        /// </summary>
-        internal static string INTERNET_DOWN {
-            get {
-                return ResourceManager.GetString("INTERNET_DOWN", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to myhue.
         /// </summary>
         internal static string KEY_FILE {
             get {
                 return ResourceManager.GetString("KEY_FILE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to connect to the remote server.
+        /// </summary>
+        internal static string LAN_DOWN {
+            get {
+                return ResourceManager.GetString("LAN_DOWN", resourceCulture);
             }
         }
         

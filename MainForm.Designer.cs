@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.btnConnect = new System.Windows.Forms.Button();
             this.gbConnect = new System.Windows.Forms.GroupBox();
@@ -44,6 +44,8 @@
             this.gbAllOnOff = new System.Windows.Forms.GroupBox();
             this.pbFindingHueBridge = new System.Windows.Forms.ProgressBar();
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gbSelectedLightDetails = new System.Windows.Forms.GroupBox();
             this.pnlLightCtrl = new System.Windows.Forms.Panel();
@@ -64,8 +66,6 @@
             this.lblBridgeCnx = new System.Windows.Forms.Label();
             this.lblBridge = new System.Windows.Forms.Label();
             this.colorPicker = new System.Windows.Forms.ColorDialog();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.gbConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLights)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lightBindingSource)).BeginInit();
@@ -91,6 +91,8 @@
             // 
             // gbConnect
             // 
+            this.gbConnect.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gbConnect.BackgroundImage = global::HueDesktop.Properties.Resources.helper_icon;
             this.gbConnect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.gbConnect.Controls.Add(this.label1);
@@ -107,7 +109,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(9, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(243, 30);
+            this.label1.Size = new System.Drawing.Size(211, 26);
             this.label1.TabIndex = 1;
             this.label1.Text = "Press the button on your Philips Hue Bridge\r\nand Click on \"Connect\" button below." +
     "";
@@ -126,15 +128,15 @@
             this.dgvLights.MultiSelect = false;
             this.dgvLights.Name = "dgvLights";
             this.dgvLights.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.NullValue = "1";
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvLights.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.NullValue = "1";
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLights.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvLights.RowHeadersVisible = false;
             this.dgvLights.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLights.ShowEditingIcon = false;
@@ -154,12 +156,16 @@
             // 
             // gbLights
             // 
+            this.gbLights.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.gbLights.Controls.Add(this.button1);
+            this.gbLights.Controls.Add(this.label4);
             this.gbLights.Controls.Add(this.btnRefreshLights);
             this.gbLights.Controls.Add(this.label3);
             this.gbLights.Controls.Add(this.dgvLights);
             this.gbLights.Location = new System.Drawing.Point(10, 118);
             this.gbLights.Name = "gbLights";
-            this.gbLights.Size = new System.Drawing.Size(188, 299);
+            this.gbLights.Size = new System.Drawing.Size(188, 343);
             this.gbLights.TabIndex = 1;
             this.gbLights.TabStop = false;
             this.gbLights.Text = "Connected Hue Lights";
@@ -179,7 +185,7 @@
             // 
             this.btnAllOn.Location = new System.Drawing.Point(13, 21);
             this.btnAllOn.Name = "btnAllOn";
-            this.btnAllOn.Size = new System.Drawing.Size(67, 30);
+            this.btnAllOn.Size = new System.Drawing.Size(140, 30);
             this.btnAllOn.TabIndex = 0;
             this.btnAllOn.Text = "ALL ON";
             this.btnAllOn.UseVisualStyleBackColor = true;
@@ -187,9 +193,9 @@
             // 
             // btnAllOff
             // 
-            this.btnAllOff.Location = new System.Drawing.Point(86, 21);
+            this.btnAllOff.Location = new System.Drawing.Point(13, 70);
             this.btnAllOff.Name = "btnAllOff";
-            this.btnAllOff.Size = new System.Drawing.Size(67, 30);
+            this.btnAllOff.Size = new System.Drawing.Size(140, 30);
             this.btnAllOff.TabIndex = 0;
             this.btnAllOff.Text = "ALL OFF";
             this.btnAllOff.UseVisualStyleBackColor = true;
@@ -197,18 +203,20 @@
             // 
             // gbAllOnOff
             // 
+            this.gbAllOnOff.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.gbAllOnOff.Controls.Add(this.btnAllOn);
             this.gbAllOnOff.Controls.Add(this.btnAllOff);
             this.gbAllOnOff.Location = new System.Drawing.Point(468, 6);
             this.gbAllOnOff.Name = "gbAllOnOff";
-            this.gbAllOnOff.Size = new System.Drawing.Size(161, 59);
+            this.gbAllOnOff.Size = new System.Drawing.Size(161, 110);
             this.gbAllOnOff.TabIndex = 1;
             this.gbAllOnOff.TabStop = false;
             this.gbAllOnOff.Text = "Group On Off Control";
             // 
             // pbFindingHueBridge
             // 
-            this.pbFindingHueBridge.Location = new System.Drawing.Point(17, 451);
+            this.pbFindingHueBridge.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbFindingHueBridge.Location = new System.Drawing.Point(17, 501);
             this.pbFindingHueBridge.MarqueeAnimationSpeed = 50;
             this.pbFindingHueBridge.Name = "pbFindingHueBridge";
             this.pbFindingHueBridge.Size = new System.Drawing.Size(639, 12);
@@ -218,24 +226,49 @@
             // 
             // pnlMain
             // 
-            this.pnlMain.Controls.Add(this.label4);
+            this.pnlMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlMain.Controls.Add(this.gbConnect);
-            this.pnlMain.Controls.Add(this.button1);
-            this.pnlMain.Controls.Add(this.pictureBox1);
             this.pnlMain.Controls.Add(this.gbSelectedLightDetails);
             this.pnlMain.Controls.Add(this.gbLights);
             this.pnlMain.Controls.Add(this.gbBridgeDetails);
             this.pnlMain.Controls.Add(this.lblBridgeCnx);
             this.pnlMain.Controls.Add(this.gbAllOnOff);
+            this.pnlMain.Controls.Add(this.pictureBox1);
             this.pnlMain.Location = new System.Drawing.Point(12, 12);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(639, 420);
+            this.pnlMain.Size = new System.Drawing.Size(639, 470);
             this.pnlMain.TabIndex = 3;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(8, 319);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(137, 13);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Click in case of bridge reset";
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(11, 269);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(74, 38);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "RESET APP";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(301, 10);
+            this.pictureBox1.Location = new System.Drawing.Point(301, 19);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(63, 63);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -244,16 +277,22 @@
             // 
             // gbSelectedLightDetails
             // 
+            this.gbSelectedLightDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gbSelectedLightDetails.Controls.Add(this.pnlLightCtrl);
             this.gbSelectedLightDetails.Location = new System.Drawing.Point(204, 118);
             this.gbSelectedLightDetails.Name = "gbSelectedLightDetails";
-            this.gbSelectedLightDetails.Size = new System.Drawing.Size(425, 299);
+            this.gbSelectedLightDetails.Size = new System.Drawing.Size(425, 343);
             this.gbSelectedLightDetails.TabIndex = 1;
             this.gbSelectedLightDetails.TabStop = false;
             this.gbSelectedLightDetails.Text = "Selected Hue Light Details and Control";
             // 
             // pnlLightCtrl
             // 
+            this.pnlLightCtrl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlLightCtrl.Controls.Add(this.btnColorChange);
             this.pnlLightCtrl.Controls.Add(this.lblBrightnessValue);
             this.pnlLightCtrl.Controls.Add(this.label2);
@@ -265,7 +304,7 @@
             this.pnlLightCtrl.Controls.Add(this.lblLD_Manufacturer);
             this.pnlLightCtrl.Location = new System.Drawing.Point(10, 14);
             this.pnlLightCtrl.Name = "pnlLightCtrl";
-            this.pnlLightCtrl.Size = new System.Drawing.Size(407, 279);
+            this.pnlLightCtrl.Size = new System.Drawing.Size(407, 312);
             this.pnlLightCtrl.TabIndex = 4;
             this.pnlLightCtrl.Visible = false;
             // 
@@ -288,7 +327,7 @@
             this.lblBrightnessValue.Location = new System.Drawing.Point(358, 6);
             this.lblBrightnessValue.MaximumSize = new System.Drawing.Size(380, 100);
             this.lblBrightnessValue.Name = "lblBrightnessValue";
-            this.lblBrightnessValue.Size = new System.Drawing.Size(37, 17);
+            this.lblBrightnessValue.Size = new System.Drawing.Size(33, 15);
             this.lblBrightnessValue.TabIndex = 1;
             this.lblBrightnessValue.Text = "MAX";
             // 
@@ -299,7 +338,7 @@
             this.label2.Location = new System.Drawing.Point(13, 21);
             this.label2.MaximumSize = new System.Drawing.Size(380, 100);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(203, 34);
+            this.label2.Size = new System.Drawing.Size(176, 30);
             this.label2.TabIndex = 1;
             this.label2.Text = "Click  on  icon  to  change  color\r\nUse slider to change brightness";
             // 
@@ -311,7 +350,7 @@
             this.tbBrightness.Minimum = 1;
             this.tbBrightness.Name = "tbBrightness";
             this.tbBrightness.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.tbBrightness.Size = new System.Drawing.Size(37, 213);
+            this.tbBrightness.Size = new System.Drawing.Size(34, 213);
             this.tbBrightness.SmallChange = 10;
             this.tbBrightness.TabIndex = 3;
             this.tbBrightness.TickFrequency = 12;
@@ -327,7 +366,7 @@
             this.lblLD_Name.Location = new System.Drawing.Point(71, 89);
             this.lblLD_Name.MaximumSize = new System.Drawing.Size(380, 100);
             this.lblLD_Name.Name = "lblLD_Name";
-            this.lblLD_Name.Size = new System.Drawing.Size(60, 23);
+            this.lblLD_Name.Size = new System.Drawing.Size(57, 21);
             this.lblLD_Name.TabIndex = 1;
             this.lblLD_Name.Text = "Name:";
             // 
@@ -338,7 +377,7 @@
             this.lblLD_Model.Location = new System.Drawing.Point(66, 139);
             this.lblLD_Model.MaximumSize = new System.Drawing.Size(380, 100);
             this.lblLD_Model.Name = "lblLD_Model";
-            this.lblLD_Model.Size = new System.Drawing.Size(63, 23);
+            this.lblLD_Model.Size = new System.Drawing.Size(62, 21);
             this.lblLD_Model.TabIndex = 1;
             this.lblLD_Model.Text = "Model:";
             // 
@@ -349,7 +388,7 @@
             this.lblMin.Location = new System.Drawing.Point(358, 255);
             this.lblMin.MaximumSize = new System.Drawing.Size(380, 100);
             this.lblMin.Name = "lblMin";
-            this.lblMin.Size = new System.Drawing.Size(32, 17);
+            this.lblMin.Size = new System.Drawing.Size(28, 15);
             this.lblMin.TabIndex = 1;
             this.lblMin.Text = "OFF";
             // 
@@ -360,7 +399,7 @@
             this.lblLD_Type.Location = new System.Drawing.Point(75, 239);
             this.lblLD_Type.MaximumSize = new System.Drawing.Size(380, 100);
             this.lblLD_Type.Name = "lblLD_Type";
-            this.lblLD_Type.Size = new System.Drawing.Size(55, 23);
+            this.lblLD_Type.Size = new System.Drawing.Size(53, 21);
             this.lblLD_Type.TabIndex = 1;
             this.lblLD_Type.Text = "Type: ";
             // 
@@ -371,7 +410,7 @@
             this.lblLD_Manufacturer.Location = new System.Drawing.Point(14, 189);
             this.lblLD_Manufacturer.MaximumSize = new System.Drawing.Size(380, 100);
             this.lblLD_Manufacturer.Name = "lblLD_Manufacturer";
-            this.lblLD_Manufacturer.Size = new System.Drawing.Size(120, 23);
+            this.lblLD_Manufacturer.Size = new System.Drawing.Size(114, 21);
             this.lblLD_Manufacturer.TabIndex = 1;
             this.lblLD_Manufacturer.Text = "Manufacturer:";
             // 
@@ -414,7 +453,7 @@
             this.lblBridgeID.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.92F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBridgeID.Location = new System.Drawing.Point(6, 54);
             this.lblBridgeID.Name = "lblBridgeID";
-            this.lblBridgeID.Size = new System.Drawing.Size(25, 15);
+            this.lblBridgeID.Size = new System.Drawing.Size(24, 13);
             this.lblBridgeID.TabIndex = 1;
             this.lblBridgeID.Text = "ID: ";
             // 
@@ -429,22 +468,23 @@
             // 
             // lblBridgeCnx
             // 
-            this.lblBridgeCnx.AutoSize = true;
+            this.lblBridgeCnx.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblBridgeCnx.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBridgeCnx.Location = new System.Drawing.Point(248, 76);
-            this.lblBridgeCnx.MaximumSize = new System.Drawing.Size(380, 100);
+            this.lblBridgeCnx.Location = new System.Drawing.Point(248, 85);
             this.lblBridgeCnx.Name = "lblBridgeCnx";
-            this.lblBridgeCnx.Size = new System.Drawing.Size(176, 30);
+            this.lblBridgeCnx.Size = new System.Drawing.Size(173, 26);
             this.lblBridgeCnx.TabIndex = 1;
             this.lblBridgeCnx.Text = "Bridge Connected. \r\nClick Refresh to see paired lights";
             this.lblBridgeCnx.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblBridge
             // 
+            this.lblBridge.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblBridge.AutoSize = true;
-            this.lblBridge.Location = new System.Drawing.Point(275, 435);
+            this.lblBridge.Location = new System.Drawing.Point(275, 485);
             this.lblBridge.Name = "lblBridge";
-            this.lblBridge.Size = new System.Drawing.Size(122, 15);
+            this.lblBridge.Size = new System.Drawing.Size(106, 13);
             this.lblBridge.TabIndex = 1;
             this.lblBridge.Text = "Finding Hue Bridge...\r\n";
             // 
@@ -453,38 +493,17 @@
             this.colorPicker.AnyColor = true;
             this.colorPicker.FullOpen = true;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(503, 93);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(88, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "RESET APP";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.btnReset_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(474, 72);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(156, 15);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Click in case of bridge reset";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(670, 470);
+            this.ClientSize = new System.Drawing.Size(670, 521);
             this.Controls.Add(this.lblBridge);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.pbFindingHueBridge);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(680, 500);
-            this.MinimumSize = new System.Drawing.Size(680, 500);
+            this.MinimumSize = new System.Drawing.Size(680, 550);
             this.Name = "MainForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -495,9 +514,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvLights)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lightBindingSource)).EndInit();
             this.gbLights.ResumeLayout(false);
+            this.gbLights.PerformLayout();
             this.gbAllOnOff.ResumeLayout(false);
             this.pnlMain.ResumeLayout(false);
-            this.pnlMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.gbSelectedLightDetails.ResumeLayout(false);
             this.pnlLightCtrl.ResumeLayout(false);

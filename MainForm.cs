@@ -518,7 +518,7 @@ namespace HueDesktop
                 MessageBox.Show(Resources.ERROR03, "Lights not paired", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            else if (result == Resources.INTERNET_DOWN)
+            else if (result == Resources.LAN_DOWN)
             {
                 MessageBox.Show(Resources.ERROR05, "Network Down!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
