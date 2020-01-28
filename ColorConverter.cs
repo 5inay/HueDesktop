@@ -39,5 +39,47 @@ namespace HueDesktop
         {
             return (Math.Sqrt(Math.Pow((b.X - a.X), 2.0) + Math.Pow((b.Y - a.Y), 2.0)));
         }
+
+        public static Byte[] xyBriToRgb(double x, double y, int bri)
+        {
+            var z = 1.0 - x - y;
+            var Y = bri / 255.0; // Brightness of lamp
+            var X = (Y / y) * x;
+            var Z = (Y / y) * z;
+            var r = X * 1.612 - Y * 0.203 - Z * 0.302;
+            var g = -X * 0.509 + Y * 1.412 + Z * 0.066;
+            var b = X * 0.026 - Y * 0.072 + Z * 0.962;
+            r = r <= 0.0031308 ? 12.92 * r : (1.0 + 0.055) * Math.Pow(r, (1.0 / 2.4)) - 0.055;
+            g = g <= 0.0031308 ? 12.92 * g : (1.0 + 0.055) * Math.Pow(g, (1.0 / 2.4)) - 0.055;
+            b = b <= 0.0031308 ? 12.92 * b : (1.0 + 0.055) * Math.Pow(b, (1.0 / 2.4)) - 0.055;
+            var maxValue = Math.Max(Math.Max(r, g), b);
+            r /= maxValue;
+            g /= maxValue;
+            b /= maxValue;
+            r = r * 255;
+            if (r < 0)
+            {
+                r = 255;
+            };
+            g = g * 255;
+            if (g < 0)
+            {
+                g = 255;
+            }
+            b = b * 255;
+            if (b < 0)
+            {
+                b = 255;
+            }
+
+            Byte[] RGB = new byte[]
+            {
+                Convert.ToByte(Convert.ToInt32(r)),
+                Convert.ToByte(Convert.ToInt32(g)),
+                Convert.ToByte(Convert.ToInt32(b))
+            };
+
+            return RGB;
+        }
     }
 }

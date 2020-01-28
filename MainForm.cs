@@ -396,7 +396,7 @@ namespace HueDesktop
             int brt = tbBrightness.Value;
             lblBrightnessValue.Text = (brt == 1) ? Resources.TEXT_OFF : (brt == 254) ? Resources.TEXT_MAX : brt.ToString();
 
-            byte[] rgbValue = Conversions.xyBriToRgb(selectedLight.state.xy[0],
+            byte[] rgbValue = ColorConverter.xyBriToRgb(selectedLight.state.xy[0],
                 selectedLight.state.xy[1],
                 brt);
 
@@ -413,6 +413,8 @@ namespace HueDesktop
             if (colorPicker.ShowDialog() == DialogResult.OK)
             {
                 Color c = colorPicker.Color;
+
+                pnlCurrentColor.BackColor = c;
                 double r = c.R;
                 double g = c.G;
                 double b = c.B;
