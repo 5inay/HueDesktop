@@ -66,6 +66,7 @@
       <DependentUpon>BridgeDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="ColorConverter.cs" />
+    <Compile Include="Conversions.cs" />
     <Compile Include="JSONBridge.cs" />
     <Compile Include="HueBridge.cs" />
     <Compile Include="HueConstants.cs" />

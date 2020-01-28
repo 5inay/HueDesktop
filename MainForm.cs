@@ -13,6 +13,7 @@ using Newtonsoft.Json;
 using System.Xml.Serialization;
 using System.Drawing;
 
+
 namespace HueDesktop
 {
     public partial class MainForm : Form
@@ -276,7 +277,7 @@ namespace HueDesktop
         /// Once found, the API Key is stored locally for future use.
         /// </summary>
         /// <param name="sender">UI element that this event originates from</param>
-        /// <param name="e">Event paramaeters</param>
+        /// <param name="e">Event parameters</param>
         private async void btnConnect_Click(object sender, EventArgs e)
         {
             RESTRequests r = new RESTRequests(theHueBridge.bridgeURLBase.Replace("http://", "").Replace(@":80/", ""));
@@ -395,11 +396,20 @@ namespace HueDesktop
             int brt = tbBrightness.Value;
             lblBrightnessValue.Text = (brt == 1) ? Resources.TEXT_OFF : (brt == 254) ? Resources.TEXT_MAX : brt.ToString();
 
+            byte[] rgbValue = Conversions.xyBriToRgb(selectedLight.state.xy[0],
+                selectedLight.state.xy[1],
+                brt);
+
+            Color currentColor = new Color();
+            currentColor = Color.FromArgb(255, rgbValue[0], rgbValue[1], rgbValue[2]);
+            pnlCurrentColor.BackColor = currentColor;
+
             pnlLightCtrl.Visible = true;
         }
 
         private async void btnColorChange_Click(object sender, EventArgs e)
         {
+            colorPicker.Color = pnlCurrentColor.BackColor;
             if (colorPicker.ShowDialog() == DialogResult.OK)
             {
                 Color c = colorPicker.Color;
