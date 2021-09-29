@@ -202,4 +202,10 @@
   <data name="LAN_DOWN" xml:space="preserve">
     <value>Unable to connect to the remote server</value>
   </data>
+  <data name="ERROR07" xml:space="preserve">
+    <value>Please enter subnet mask (between 1 to 255) in the numeric text box on left.</value>
+  </data>
+  <data name="IP_ADDRESS_FILE" xml:space="preserve">
+    <value>ipadd</value>
+  </data>
 </root>

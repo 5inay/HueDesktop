@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.btnConnect = new System.Windows.Forms.Button();
             this.gbConnect = new System.Windows.Forms.GroupBox();
@@ -48,6 +48,7 @@
             this.pnlMain = new System.Windows.Forms.Panel();
             this.gbSelectedLightDetails = new System.Windows.Forms.GroupBox();
             this.pnlLightCtrl = new System.Windows.Forms.Panel();
+            this.pnlCurrentColor = new System.Windows.Forms.Panel();
             this.btnColorChange = new System.Windows.Forms.Button();
             this.lblBrightnessValue = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -55,9 +56,12 @@
             this.lblLD_Name = new System.Windows.Forms.Label();
             this.lblLD_Model = new System.Windows.Forms.Label();
             this.lblMin = new System.Windows.Forms.Label();
+            this.lblCurrentColor = new System.Windows.Forms.Label();
             this.lblLD_Type = new System.Windows.Forms.Label();
             this.lblLD_Manufacturer = new System.Windows.Forms.Label();
             this.gbBridgeDetails = new System.Windows.Forms.GroupBox();
+            this.nudSubnet = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnBridgeDetails = new System.Windows.Forms.Button();
             this.lblBridgeID = new System.Windows.Forms.Label();
@@ -66,8 +70,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblBridge = new System.Windows.Forms.Label();
             this.colorPicker = new System.Windows.Forms.ColorDialog();
-            this.lblCurrentColor = new System.Windows.Forms.Label();
-            this.pnlCurrentColor = new System.Windows.Forms.Panel();
             this.gbConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLights)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lightBindingSource)).BeginInit();
@@ -78,6 +80,7 @@
             this.pnlLightCtrl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbBrightness)).BeginInit();
             this.gbBridgeDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudSubnet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -129,30 +132,30 @@
             this.dgvLights.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvLights.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLights.ColumnHeadersVisible = false;
-            this.dgvLights.Location = new System.Drawing.Point(11, 25);
+            this.dgvLights.Location = new System.Drawing.Point(11, 18);
             this.dgvLights.MultiSelect = false;
             this.dgvLights.Name = "dgvLights";
             this.dgvLights.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.NullValue = "1";
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvLights.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.NullValue = "1";
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLights.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvLights.RowHeadersVisible = false;
             this.dgvLights.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLights.ShowEditingIcon = false;
-            this.dgvLights.Size = new System.Drawing.Size(171, 149);
+            this.dgvLights.Size = new System.Drawing.Size(171, 139);
             this.dgvLights.TabIndex = 2;
             this.dgvLights.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.onLightSelectionChanged);
             this.dgvLights.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.onCellText_Changed);
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(6, 220);
+            this.label3.Location = new System.Drawing.Point(6, 202);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(171, 66);
             this.label3.TabIndex = 1;
@@ -168,9 +171,9 @@
             this.gbLights.Controls.Add(this.btnRefreshLights);
             this.gbLights.Controls.Add(this.label3);
             this.gbLights.Controls.Add(this.dgvLights);
-            this.gbLights.Location = new System.Drawing.Point(10, 118);
+            this.gbLights.Location = new System.Drawing.Point(10, 153);
             this.gbLights.Name = "gbLights";
-            this.gbLights.Size = new System.Drawing.Size(188, 343);
+            this.gbLights.Size = new System.Drawing.Size(188, 308);
             this.gbLights.TabIndex = 1;
             this.gbLights.TabStop = false;
             this.gbLights.Text = "Connected Hue Lights";
@@ -181,7 +184,7 @@
             this.button1.BackColor = System.Drawing.Color.Black;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(11, 269);
+            this.button1.Location = new System.Drawing.Point(11, 251);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(74, 38);
             this.button1.TabIndex = 0;
@@ -193,7 +196,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 319);
+            this.label4.Location = new System.Drawing.Point(6, 292);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(137, 13);
             this.label4.TabIndex = 6;
@@ -204,7 +207,7 @@
             this.btnRefreshLights.BackColor = System.Drawing.Color.Black;
             this.btnRefreshLights.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefreshLights.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefreshLights.Location = new System.Drawing.Point(83, 180);
+            this.btnRefreshLights.Location = new System.Drawing.Point(83, 162);
             this.btnRefreshLights.Name = "btnRefreshLights";
             this.btnRefreshLights.Size = new System.Drawing.Size(95, 37);
             this.btnRefreshLights.TabIndex = 3;
@@ -311,6 +314,14 @@
             this.pnlLightCtrl.TabIndex = 4;
             this.pnlLightCtrl.Visible = false;
             // 
+            // pnlCurrentColor
+            // 
+            this.pnlCurrentColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlCurrentColor.Location = new System.Drawing.Point(141, 285);
+            this.pnlCurrentColor.Name = "pnlCurrentColor";
+            this.pnlCurrentColor.Size = new System.Drawing.Size(26, 20);
+            this.pnlCurrentColor.TabIndex = 5;
+            // 
             // btnColorChange
             // 
             this.btnColorChange.BackColor = System.Drawing.Color.Black;
@@ -331,7 +342,7 @@
             this.lblBrightnessValue.Location = new System.Drawing.Point(358, 6);
             this.lblBrightnessValue.MaximumSize = new System.Drawing.Size(380, 100);
             this.lblBrightnessValue.Name = "lblBrightnessValue";
-            this.lblBrightnessValue.Size = new System.Drawing.Size(32, 15);
+            this.lblBrightnessValue.Size = new System.Drawing.Size(33, 15);
             this.lblBrightnessValue.TabIndex = 1;
             this.lblBrightnessValue.Text = "MAX";
             // 
@@ -342,7 +353,7 @@
             this.label2.Location = new System.Drawing.Point(13, 21);
             this.label2.MaximumSize = new System.Drawing.Size(380, 100);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(175, 30);
+            this.label2.Size = new System.Drawing.Size(176, 30);
             this.label2.TabIndex = 1;
             this.label2.Text = "Click  on  icon  to  change  color\r\nUse slider to change brightness";
             // 
@@ -381,7 +392,7 @@
             this.lblLD_Model.Location = new System.Drawing.Point(66, 147);
             this.lblLD_Model.MaximumSize = new System.Drawing.Size(380, 100);
             this.lblLD_Model.Name = "lblLD_Model";
-            this.lblLD_Model.Size = new System.Drawing.Size(59, 21);
+            this.lblLD_Model.Size = new System.Drawing.Size(62, 21);
             this.lblLD_Model.TabIndex = 1;
             this.lblLD_Model.Text = "Model:";
             // 
@@ -396,6 +407,17 @@
             this.lblMin.TabIndex = 1;
             this.lblMin.Text = "OFF";
             // 
+            // lblCurrentColor
+            // 
+            this.lblCurrentColor.AutoSize = true;
+            this.lblCurrentColor.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCurrentColor.Location = new System.Drawing.Point(71, 285);
+            this.lblCurrentColor.MaximumSize = new System.Drawing.Size(380, 100);
+            this.lblCurrentColor.Name = "lblCurrentColor";
+            this.lblCurrentColor.Size = new System.Drawing.Size(55, 21);
+            this.lblCurrentColor.TabIndex = 1;
+            this.lblCurrentColor.Text = "Color:";
+            // 
             // lblLD_Type
             // 
             this.lblLD_Type.AutoSize = true;
@@ -403,7 +425,7 @@
             this.lblLD_Type.Location = new System.Drawing.Point(75, 239);
             this.lblLD_Type.MaximumSize = new System.Drawing.Size(380, 100);
             this.lblLD_Type.Name = "lblLD_Type";
-            this.lblLD_Type.Size = new System.Drawing.Size(52, 21);
+            this.lblLD_Type.Size = new System.Drawing.Size(53, 21);
             this.lblLD_Type.TabIndex = 1;
             this.lblLD_Type.Text = "Type: ";
             // 
@@ -414,32 +436,66 @@
             this.lblLD_Manufacturer.Location = new System.Drawing.Point(14, 193);
             this.lblLD_Manufacturer.MaximumSize = new System.Drawing.Size(380, 100);
             this.lblLD_Manufacturer.Name = "lblLD_Manufacturer";
-            this.lblLD_Manufacturer.Size = new System.Drawing.Size(111, 21);
+            this.lblLD_Manufacturer.Size = new System.Drawing.Size(114, 21);
             this.lblLD_Manufacturer.TabIndex = 1;
             this.lblLD_Manufacturer.Text = "Manufacturer:";
             // 
             // gbBridgeDetails
             // 
+            this.gbBridgeDetails.Controls.Add(this.nudSubnet);
+            this.gbBridgeDetails.Controls.Add(this.label5);
             this.gbBridgeDetails.Controls.Add(this.btnSearch);
             this.gbBridgeDetails.Controls.Add(this.btnBridgeDetails);
             this.gbBridgeDetails.Controls.Add(this.lblBridgeID);
             this.gbBridgeDetails.Controls.Add(this.lblBridgeName);
             this.gbBridgeDetails.Location = new System.Drawing.Point(11, 6);
             this.gbBridgeDetails.Name = "gbBridgeDetails";
-            this.gbBridgeDetails.Size = new System.Drawing.Size(187, 110);
+            this.gbBridgeDetails.Size = new System.Drawing.Size(187, 141);
             this.gbBridgeDetails.TabIndex = 1;
             this.gbBridgeDetails.TabStop = false;
             this.gbBridgeDetails.Text = "Bridge Details";
+            // 
+            // nudSubnet
+            // 
+            this.nudSubnet.Location = new System.Drawing.Point(82, 77);
+            this.nudSubnet.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.nudSubnet.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudSubnet.Name = "nudSubnet";
+            this.nudSubnet.Size = new System.Drawing.Size(49, 20);
+            this.nudSubnet.TabIndex = 4;
+            this.nudSubnet.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudSubnet.ValueChanged += new System.EventHandler(this.nudSubnet_ValueChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(7, 79);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(74, 13);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "IP: 192.168.0.";
             // 
             // btnSearch
             // 
             this.btnSearch.BackColor = System.Drawing.Color.Black;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Location = new System.Drawing.Point(9, 77);
+            this.btnSearch.Location = new System.Drawing.Point(10, 112);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.Size = new System.Drawing.Size(74, 23);
             this.btnSearch.TabIndex = 3;
-            this.btnSearch.Text = "Search";
+            this.btnSearch.Text = "Deprecated";
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
@@ -447,7 +503,7 @@
             // 
             this.btnBridgeDetails.BackColor = System.Drawing.Color.Black;
             this.btnBridgeDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBridgeDetails.Location = new System.Drawing.Point(105, 77);
+            this.btnBridgeDetails.Location = new System.Drawing.Point(106, 112);
             this.btnBridgeDetails.Name = "btnBridgeDetails";
             this.btnBridgeDetails.Size = new System.Drawing.Size(75, 23);
             this.btnBridgeDetails.TabIndex = 2;
@@ -513,25 +569,6 @@
             this.colorPicker.AnyColor = true;
             this.colorPicker.FullOpen = true;
             // 
-            // lblCurrentColor
-            // 
-            this.lblCurrentColor.AutoSize = true;
-            this.lblCurrentColor.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCurrentColor.Location = new System.Drawing.Point(71, 285);
-            this.lblCurrentColor.MaximumSize = new System.Drawing.Size(380, 100);
-            this.lblCurrentColor.Name = "lblCurrentColor";
-            this.lblCurrentColor.Size = new System.Drawing.Size(53, 21);
-            this.lblCurrentColor.TabIndex = 1;
-            this.lblCurrentColor.Text = "Color:";
-            // 
-            // pnlCurrentColor
-            // 
-            this.pnlCurrentColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnlCurrentColor.Location = new System.Drawing.Point(141, 285);
-            this.pnlCurrentColor.Name = "pnlCurrentColor";
-            this.pnlCurrentColor.Size = new System.Drawing.Size(26, 20);
-            this.pnlCurrentColor.TabIndex = 5;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -564,6 +601,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tbBrightness)).EndInit();
             this.gbBridgeDetails.ResumeLayout(false);
             this.gbBridgeDetails.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudSubnet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -609,6 +647,8 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel pnlCurrentColor;
         private System.Windows.Forms.Label lblCurrentColor;
+        private System.Windows.Forms.NumericUpDown nudSubnet;
+        private System.Windows.Forms.Label label5;
     }
 }
 

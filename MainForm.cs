@@ -5,6 +5,7 @@ using System.Web.Script.Serialization;
 using System.Windows.Forms;
 using HueDesktop.Properties;
 using System;
+using System.ComponentModel;
 using System.Text;
 using System.IO;
 using System.Linq;
@@ -25,14 +26,17 @@ namespace HueDesktop
 
         private HueBridge theHueBridge;
         public HueBridge getHueBridge() { return theHueBridge; }
+        private Decimal ourIP;
         private List<JSONBridge> bridges;
 
         private volatile string APIKey;
+        private Decimal ipSubnet;
         
         private HueLight[] allLights;
         
         private string bridgeXmlPath;
         private string apiKeyPath;
+        private string ipAddressFilePath;
 
         private int[] lightIndices;
         private int MAX_LIGHTS_PER_BRIDGE = 20;
@@ -57,9 +61,11 @@ namespace HueDesktop
             setupUI();
             initPaths();
             theHueBridge = new HueBridge();
-
+            ourIP = 0;
             lightIndices = new int[MAX_LIGHTS_PER_BRIDGE];
+            Decimal subnetNum = checkForExistingSubnet();
 
+            nudSubnet.Value = subnetNum;
             
             if (checkForExistingKey())
             {
@@ -76,7 +82,7 @@ namespace HueDesktop
         {
             gbConnect.Visible = true;
             btnConnect.Enabled = true;
-            findBridges();
+//            findBridges(); // Deprecated as of 29th Sep, 2021
         }
 
 
@@ -114,6 +120,7 @@ namespace HueDesktop
 
             bridgeXmlPath = keyXmlFolder + Resources.BRIDGE_XML;
             apiKeyPath = keyXmlFolder + Resources.KEY_FILE;
+            ipAddressFilePath = keyXmlFolder + Resources.IP_ADDRESS_FILE;
         }
         #endregion  //INITIALIZATION
 
@@ -124,6 +131,9 @@ namespace HueDesktop
         /// Philips Hue Developer Guide. This method is 
         /// asynchronous and uses Client_DownloadStringCompleted 
         /// method as it's handler, when complete.
+        /// ================================================
+        /// NOTE: uPNP method deprecated as of 29th Sep 2021
+        /// ================================================
         /// </summary>
         private void findBridges()
         {
@@ -136,7 +146,6 @@ namespace HueDesktop
             WebClient client = new WebClient();
             client.DownloadStringCompleted += Client_DownloadStringCompleted;
             client.DownloadStringAsync(new Uri(url), null);
-            
         }
 
         /// <summary>
@@ -162,7 +171,7 @@ namespace HueDesktop
 
             if (bridges != null)
             {
-                logger.Info("Yeah Baby!!!");
+                logger.Info("Bride XML exists!");
                 WebClient client = new WebClient();
                 client.DownloadProgressChanged += Client_DownloadProgressChanged;
                 client.DownloadFileCompleted += Client_DownloadFileCompleted;
@@ -172,7 +181,7 @@ namespace HueDesktop
             }
             else
             {
-                logger.Error("Scan failed to find any Philips Hue Bridges.");
+                logger.Error("Scan failed to find any Philips Hue Bridges. Please generate an xml file with bridge details.");
                 MessageBox.Show(Resources.ERROR00, "Scan Failed", MessageBoxButtons.OK);
             }
 
@@ -280,7 +289,16 @@ namespace HueDesktop
         /// <param name="e">Event parameters</param>
         private async void btnConnect_Click(object sender, EventArgs e)
         {
-            RESTRequests r = new RESTRequests(theHueBridge.bridgeURLBase.Replace("http://", "").Replace(@":80/", ""));
+            if (ourIP == 0)
+            {
+                MessageBox.Show(Resources.ERROR07, "IP address error", MessageBoxButtons.OK);
+                btnSearch.Enabled = true;
+                btnBridgeDetails.Enabled = false;
+                return;
+            }
+
+            string ipAddress = "192.168.0." + ourIP.ToString();
+            RESTRequests r = new RESTRequests(ipAddress);
             string result = await r.POST("/api", HueConstants.BODY_POST_CONNECT, Encoding.UTF8, Resources.BODY_TYPE_JSON);
             if (result == null || result.Contains("error") || result == "")
             {
@@ -296,6 +314,7 @@ namespace HueDesktop
 
             APIKey = s[0].success.username;
             storeKey();
+            storeSubnet(ourIP);
 
             logger.Info("API KEY DONE");
 
@@ -511,6 +530,26 @@ namespace HueDesktop
             
             return false;
         }
+
+        private Decimal checkForExistingSubnet()
+        {
+            byte[] buffer = new byte[256];
+            FileStream fs = File.Open(ipAddressFilePath, FileMode.OpenOrCreate);
+            int x = fs.Read(buffer, 0, 256);
+            fs.Close();
+
+            if (x > 0)
+            {
+                string subnetString = Encoding.UTF8.GetString(buffer).Trim(new char[] { '\0' });
+                ipSubnet = decimal.Parse(subnetString);
+                 
+                return ipSubnet;
+            }
+
+            logger.Warn("No subnet ip present!");
+
+            return 1;
+        }
         #endregion //API_KEY_HANDLERS
 
 
@@ -610,9 +649,28 @@ namespace HueDesktop
             }
 
             if (File.Exists(apiKeyPath)) { File.Delete(apiKeyPath); }
-            if (File.Exists(bridgeXmlPath)) { File.Delete(bridgeXmlPath); }
+            /* NOT deleting file after uPNP method of bridge discovery deprecated (as of 29th Sep, 2021)
+             * If a new bridge is to be used with this app, save the bridge sml in a new file and modify 
+             * initBridge() method
+             * */
+            // if (File.Exists(bridgeXmlPath)) { File.Delete(bridgeXmlPath); } 
 
             resetApp();
+        }
+
+        private void nudSubnet_ValueChanged(object sender, EventArgs e)
+        {
+            ourIP = nudSubnet.Value;
+
+            
+        }
+
+        private async void storeSubnet(decimal ipadd)
+        {
+            string ipSubnet = ipadd.ToString();
+            FileStream fs = File.Open(ipAddressFilePath, FileMode.OpenOrCreate);
+            await fs.WriteAsync(Encoding.ASCII.GetBytes(ipSubnet), 0, ipSubnet.Length);
+            fs.Close();
         }
     }
 }

@@ -242,6 +242,15 @@ namespace HueDesktop.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please enter subnet mask (between 1 to 255) in the numeric text box on left..
+        /// </summary>
+        internal static string ERROR07 {
+            get {
+                return ResourceManager.GetString("ERROR07", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There was an error sending name details to the bridge..
         /// </summary>
         internal static string ERROR4 {
@@ -257,6 +266,15 @@ namespace HueDesktop.Properties {
             get {
                 object obj = ResourceManager.GetObject("helper_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ipadd.
+        /// </summary>
+        internal static string IP_ADDRESS_FILE {
+            get {
+                return ResourceManager.GetString("IP_ADDRESS_FILE", resourceCulture);
             }
         }
         
