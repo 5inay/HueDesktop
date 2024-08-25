@@ -415,14 +415,17 @@ namespace HueDesktop
             int brt = tbBrightness.Value;
             lblBrightnessValue.Text = (brt == 1) ? Resources.TEXT_OFF : (brt == 254) ? Resources.TEXT_MAX : brt.ToString();
 
-            byte[] rgbValue = ColorConverter.xyBriToRgb(selectedLight.state.xy[0],
-                selectedLight.state.xy[1],
-                brt);
-
-            Color currentColor = new Color();
-            currentColor = Color.FromArgb(255, rgbValue[0], rgbValue[1], rgbValue[2]);
-            pnlCurrentColor.BackColor = currentColor;
-
+            if (selectedLight.state.colormode == "xy") {
+                byte[] rgbValue = ColorConverter.xyBriToRgb(selectedLight.state.xy[0],
+                    selectedLight.state.xy[1],
+                    brt);
+                Color currentColor = new Color();
+                currentColor = Color.FromArgb(255, rgbValue[0], rgbValue[1], rgbValue[2]);
+                pnlCurrentColor.BackColor = currentColor;                
+            } else
+            {
+                // TODO: Convert Colot Temperature to RGB
+            }
             pnlLightCtrl.Visible = true;
         }
 
